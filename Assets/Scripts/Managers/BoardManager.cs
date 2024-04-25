@@ -30,7 +30,16 @@ public class BoardManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        for (int i = 0; i < tileArr.Length; i++)
+        {
+            for (int j = 0; j < pieceArr.Length; j++)
+            {
+                if (tileArr[i].getLocation() == pieceArr[j].getLocation())
+                {
+                    tileArr[i].setOccupancy(true);
+                }
+            }
+        }
     }
 
     public void setClickedTile(Tile tile)

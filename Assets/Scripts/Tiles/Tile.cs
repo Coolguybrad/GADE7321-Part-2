@@ -36,9 +36,9 @@ public class Tile : MonoBehaviour
         highlight.SetActive(false);
     }
 
-    public void setOccupancy() 
-    { 
-    
+    public void setOccupancy(bool status) 
+    {
+        occupied = status;
     }
 
     public Vector2 getLocation() 
