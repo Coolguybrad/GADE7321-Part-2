@@ -35,11 +35,11 @@ public class Tile : MonoBehaviour
         return location;
     }
 
-    public void enablePossibleMove() 
+    public void showPossibleMove() 
     {
         possibleMove.SetActive(true);
     }
-    public void disablePossibleMove() 
+    public void hidePossibleMove() 
     {
         possibleMove.SetActive(false);
     }

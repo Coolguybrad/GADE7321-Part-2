@@ -6,7 +6,7 @@ public class PieceManager : MonoBehaviour
 {
     public static PieceManager Instance;
     // Start is called before the first frame update
-    [SerializeField] private GameObject selectedPiece;
+    [SerializeField] private Piece selectedPiece;
 
     private void Awake()
     {
@@ -29,12 +29,24 @@ public class PieceManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (selectedPiece != null)
+        {
+            BoardManager.Instance.showPossibleMoves(selectedPiece);
+        }
+        else
+        {
+
+            BoardManager.Instance.wipePossibleMoves();
+        }
     }
 
-    public void setSelectedPiece(GameObject piece) 
+    public void setSelectedPiece(Piece piece) 
     {
         selectedPiece = piece;
+    }
+    public Piece getSelectedPiece() 
+    {
+        return selectedPiece;
     }
 
     public void moveSelectedPiece() 
