@@ -4,7 +4,7 @@ public class Piece : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Vector2 location;
-    [SerializeField] private bool canGrassWalk;
+    [SerializeField] private bool canBushWalk;
 
     void Start()
     {
@@ -44,6 +44,11 @@ public class Piece : MonoBehaviour
     {
         location = pos;
         this.gameObject.transform.position = new Vector3(pos.x, gameObject.transform.position.y, pos.y);
+    }
+
+    public bool getBushBool() 
+    {
+        return canBushWalk;
     }
 
 
