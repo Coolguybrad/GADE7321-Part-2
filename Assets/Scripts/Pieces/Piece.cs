@@ -4,6 +4,7 @@ public class Piece : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Vector2 location;
+    [SerializeField] private bool canGrassWalk;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class Piece : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Mouse0))
         {
+            BoardManager.Instance.wipePossibleMoves();
             Debug.Log(this.gameObject + "Selected");
             PieceManager.Instance.setSelectedPiece(this.gameObject.GetComponent<Piece>());
         }

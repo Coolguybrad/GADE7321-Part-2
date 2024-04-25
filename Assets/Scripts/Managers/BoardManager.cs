@@ -6,6 +6,7 @@ public class BoardManager : MonoBehaviour
     public static BoardManager Instance;
     [SerializeField] private Tile[] tileArr;
     [SerializeField] private Piece[] pieceArr;
+    [SerializeField] private Tile ClickedTile;
 
 
     private void Awake()
@@ -30,6 +31,16 @@ public class BoardManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void setClickedTile(Tile tile) 
+    {
+        ClickedTile = tile;
+    }
+
+    public Tile getClickedTile() 
+    {
+        return ClickedTile;
     }
 
     public void showPossibleMoves(Piece piece)
@@ -81,45 +92,7 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    //public void hidePossibleMoves(Piece piece)
-    //{
-    //    try
-    //    {
-    //        getTile(new Vector2(piece.getLocation().x - 1, piece.getLocation().y)).hidePossibleMove();
-    //    }
-    //    catch (Exception e)
-    //    {
-
-    //        Debug.Log("Tile at " + (piece.getLocation().x - 1) + "," + piece.getLocation().y + " Does not exist");
-    //    }
-    //    try
-    //    {
-    //        getTile(new Vector2(piece.getLocation().x + 1, piece.getLocation().y)).hidePossibleMove();
-    //    }
-    //    catch (Exception e)
-    //    {
-
-    //        Debug.Log("Tile at " + (piece.getLocation().x + 1) + "," + piece.getLocation().y + " Does not exist");
-    //    }
-    //    try
-    //    {
-    //        getTile(new Vector2(piece.getLocation().x, piece.getLocation().y - 1)).hidePossibleMove();
-    //    }
-    //    catch (Exception e)
-    //    {
-
-    //        Debug.Log("Tile at " + piece.getLocation().x + "," + (piece.getLocation().y - 1) + " Does not exist");
-    //    }
-    //    try
-    //    {
-    //        getTile(new Vector2(piece.getLocation().x, piece.getLocation().y + 1)).hidePossibleMove();
-    //    }
-    //    catch (Exception e)
-    //    {
-
-    //        Debug.Log("Tile at " + piece.getLocation().x + "," + (piece.getLocation().y + 1) + " Does not exist");
-    //    }
-    //}
+    
 
     public Piece getPiece(Vector2 position)
     {

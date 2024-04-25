@@ -10,6 +10,12 @@ public class Tile : MonoBehaviour
     private GameObject occupiedBy;
     [SerializeField] private Vector2 location;
 
+
+    private void Update()
+    {
+        
+    }
+
     private void Awake()
     {
         location = new Vector2(gameObject.transform.position.x, gameObject.transform.position.z);
@@ -18,8 +24,13 @@ public class Tile : MonoBehaviour
     {
         highlight.SetActive(true);
     }
-    
 
+    private void OnMouseDown()
+    {
+        BoardManager.Instance.setClickedTile(this);
+        PieceManager.Instance.MoveSelectedPiece();
+
+    }
     private void OnMouseExit()
     {
         highlight.SetActive(false);
@@ -43,6 +54,12 @@ public class Tile : MonoBehaviour
     {
         possibleMove.SetActive(false);
     }
+
+    public GameObject getPossibleMove() 
+    {
+        return possibleMove;
+    }
+
 
 
     

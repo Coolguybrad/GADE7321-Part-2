@@ -49,10 +49,17 @@ public class PieceManager : MonoBehaviour
         return selectedPiece;
     }
 
-    public void moveSelectedPiece() 
-    { 
-        
+    public void MoveSelectedPiece() 
+    {
+        if (BoardManager.Instance.getClickedTile().getPossibleMove().activeInHierarchy)
+        {
+            selectedPiece.movePiece(BoardManager.Instance.getClickedTile().getLocation());
+            BoardManager.Instance.wipePossibleMoves();
+        }
     }
+
+
+    
 
     
 }
