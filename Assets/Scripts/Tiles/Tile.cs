@@ -6,7 +6,7 @@ public class Tile : MonoBehaviour
 {
     [SerializeField] private GameObject highlight;
     [SerializeField] private GameObject possibleMove;
-    private bool occupied = false;
+    [SerializeField] private bool occupied = false;
     private GameObject occupiedBy;
     [SerializeField] private Vector2 location;
 
@@ -36,6 +36,10 @@ public class Tile : MonoBehaviour
         highlight.SetActive(false);
     }
 
+    public bool getOccupancy() 
+    {
+        return occupied;
+    }
     public void setOccupancy(bool status) 
     {
         occupied = status;
