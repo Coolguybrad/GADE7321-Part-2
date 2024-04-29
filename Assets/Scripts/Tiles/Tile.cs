@@ -7,8 +7,22 @@ public class Tile : MonoBehaviour
     [SerializeField] private GameObject highlight;
     [SerializeField] private GameObject possibleMove;
     [SerializeField] private bool occupied = false;
+
     private GameObject occupiedBy;
-    [SerializeField] private Vector2 location;
+
+    [SerializeField] private Vector3 location;
+
+    private enum TileTypeEnum
+    {
+        normal,
+        high,
+        bush,
+        rough,
+        trap,
+        goal
+    }
+
+    [SerializeField] private TileTypeEnum thisTileType;
 
 
     private void Update()
@@ -18,8 +32,9 @@ public class Tile : MonoBehaviour
 
     private void Awake()
     {
-        location = new Vector2(gameObject.transform.position.x, gameObject.transform.position.z);
+        location = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
     }
+
     private void OnMouseOver()
     {
         highlight.SetActive(true);
@@ -45,7 +60,7 @@ public class Tile : MonoBehaviour
         occupied = status;
     }
 
-    public Vector2 getLocation() 
+    public Vector3 getLocation() 
     {
         return location;
     }
@@ -64,7 +79,14 @@ public class Tile : MonoBehaviour
         return possibleMove;
     }
 
+    public void setOccupiedBy(GameObject theNicePiece)
+    {
+        occupiedBy = theNicePiece;
+    }
 
-
-    
+    public GameObject getOccupiedBy()
+    {
+        return occupiedBy;
+    }
+        
 }

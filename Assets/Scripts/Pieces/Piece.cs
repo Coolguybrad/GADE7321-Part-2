@@ -3,16 +3,21 @@ using UnityEngine;
 public class Piece : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private Vector2 location;
+    [SerializeField] private Vector3 location;
     [SerializeField] private bool canBushWalk;
+    [SerializeField] private bool jumper;
+
+    [SerializeField] private int team;
+    [SerializeField] private int powerVal;
 
     void Start()
     {
 
     }
+
     private void Awake()
     {
-        location = new Vector2(gameObject.transform.position.x, gameObject.transform.position.z);
+        location = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
     }
 
     // Update is called once per frame
@@ -31,19 +36,18 @@ public class Piece : MonoBehaviour
             BoardManager.Instance.wipePossibleMoves();
             Debug.Log(this.gameObject + "Selected");
             PieceManager.Instance.setSelectedPiece(this.gameObject.GetComponent<Piece>());
-        }
-        
+        }        
     }
 
-    public Vector2 getLocation()
+    public Vector3 getLocation()
     {
         return location;
     }
 
-    public void movePiece(Vector2 pos) 
+    public void movePiece(Vector3 pos) 
     {
         location = pos;
-        this.gameObject.transform.position = new Vector3(pos.x, gameObject.transform.position.y, pos.y);
+        this.gameObject.transform.position = new Vector3(pos.x, gameObject.transform.position.y, pos.z);
     }
 
     public bool getBushBool() 
@@ -51,5 +55,19 @@ public class Piece : MonoBehaviour
         return canBushWalk;
     }
 
+    public void setPowerVal(int newPower)
+    {
+        powerVal = newPower;
+    }
+
+    public int getPowerVal()
+    {
+        return powerVal;
+    }
+
+    public void MinorSpellingError()
+    {
+        Destroy(this.gameObject);
+    }
 
 }

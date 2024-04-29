@@ -24,14 +24,14 @@ public class BoardManager : MonoBehaviour
     }
     void Start()
     {
-        for (int i = 0; i < tileArr.Length; i++)
-        {
-            Debug.Log(tileArr[i] + " " + tileArr[i].getLocation());
-        }
-        for (int i = 0; i < pieceArr.Length; i++)
-        {
-            Debug.Log(pieceArr[i] + " " + pieceArr[i].getLocation());
-        }
+        //for (int i = 0; i < tileArr.Length; i++)
+        //{
+        //    Debug.Log(tileArr[i] + " " + tileArr[i].getLocation());
+        //}
+        //for (int i = 0; i < pieceArr.Length; i++)
+        //{
+        //    Debug.Log(pieceArr[i] + " " + pieceArr[i].getLocation());
+        //}
     }
 
     // Update is called once per frame
@@ -70,18 +70,18 @@ public class BoardManager : MonoBehaviour
     {
         try
         {
-            if (!getTile(new Vector2(piece.getLocation().x - 1, piece.getLocation().y)).getOccupancy())
+            if (!getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).getOccupancy())
             {
-                if (getTile(new Vector2(piece.getLocation().x - 1, piece.getLocation().y)).gameObject.tag == "Bush")
+                if (getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).gameObject.tag == "Bush")
                 {
                     if (piece.getBushBool())
                     {
-                        getTile(new Vector2(piece.getLocation().x - 1, piece.getLocation().y)).showPossibleMove();
+                        getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).showPossibleMove();
                     }
                 }
                 else
                 {
-                    getTile(new Vector2(piece.getLocation().x - 1, piece.getLocation().y)).showPossibleMove();
+                    getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).showPossibleMove();
                 }
             }
 
@@ -89,23 +89,23 @@ public class BoardManager : MonoBehaviour
         catch (Exception e)
         {
 
-            Debug.Log("Tile at " + (piece.getLocation().x - 1) + "," + piece.getLocation().y + " Does not exist");
+            Debug.Log("Tile at " + (piece.getLocation().x - 1) + "," + piece.getLocation().z + " Does not exist");
         }
         try
         {
-            if (!getTile(new Vector2(piece.getLocation().x + 1, piece.getLocation().y)).getOccupancy())
+            if (!getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).getOccupancy())
             {
-                if (getTile(new Vector2(piece.getLocation().x + 1, piece.getLocation().y)).gameObject.tag == "Bush")
+                if (getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).gameObject.tag == "Bush")
                 {
                     if (piece.getBushBool())
                     {
-                        getTile(new Vector2(piece.getLocation().x + 1, piece.getLocation().y)).showPossibleMove();
+                        getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).showPossibleMove();
                     }
 
                 }
                 else
                 {
-                    getTile(new Vector2(piece.getLocation().x + 1, piece.getLocation().y)).showPossibleMove();
+                    getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).showPossibleMove();
                 }
             }
 
@@ -113,23 +113,23 @@ public class BoardManager : MonoBehaviour
         catch (Exception e)
         {
 
-            Debug.Log("Tile at " + (piece.getLocation().x + 1) + "," + piece.getLocation().y + " Does not exist");
+            Debug.Log("Tile at " + (piece.getLocation().x + 1) + "," + piece.getLocation().z + " Does not exist");
         }
         try
         {
-            if (!getTile(new Vector2(piece.getLocation().x, piece.getLocation().y - 1)).getOccupancy())
+            if (!getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).getOccupancy())
             {
-                if (getTile(new Vector2(piece.getLocation().x, piece.getLocation().y - 1)).gameObject.tag == "Bush")
+                if (getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).gameObject.tag == "Bush")
                 {
                     if (piece.getBushBool())
                     {
-                        getTile(new Vector2(piece.getLocation().x, piece.getLocation().y - 1)).showPossibleMove();
+                        getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).showPossibleMove();
                     }
 
                 }
                 else
                 {
-                    getTile(new Vector2(piece.getLocation().x, piece.getLocation().y - 1)).showPossibleMove();
+                    getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).showPossibleMove();
                 }
             }
 
@@ -137,24 +137,24 @@ public class BoardManager : MonoBehaviour
         catch (Exception e)
         {
 
-            Debug.Log("Tile at " + piece.getLocation().x + "," + (piece.getLocation().y - 1) + " Does not exist");
+            Debug.Log("Tile at " + piece.getLocation().x + "," + (piece.getLocation().z - 1) + " Does not exist");
         }
         try
         {
 
-            if (!getTile(new Vector2(piece.getLocation().x, piece.getLocation().y + 1)).getOccupancy())
+            if (!getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).getOccupancy())
             {
-                if (getTile(new Vector2(piece.getLocation().x, piece.getLocation().y + 1)).gameObject.tag == "Bush")
+                if (getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).gameObject.tag == "Bush")
                 {
                     if (piece.getBushBool())
                     {
-                        getTile(new Vector2(piece.getLocation().x, piece.getLocation().y + 1)).showPossibleMove();
+                        getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).showPossibleMove();
                     }
 
                 }
                 else
                 {
-                    getTile(new Vector2(piece.getLocation().x, piece.getLocation().y + 1)).showPossibleMove();
+                    getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).showPossibleMove();
                 }
 
             }
@@ -162,7 +162,7 @@ public class BoardManager : MonoBehaviour
         catch (Exception e)
         {
 
-            Debug.Log("Tile at " + piece.getLocation().x + "," + (piece.getLocation().y + 1) + " Does not exist");
+            Debug.Log("Tile at " + piece.getLocation().x + "," + (piece.getLocation().z + 1) + " Does not exist");
         }
 
     }
@@ -177,7 +177,7 @@ public class BoardManager : MonoBehaviour
 
 
 
-    public Piece getPiece(Vector2 position)
+    public Piece getPiece(Vector3 position)
     {
         Piece piece = null;
         for (int i = 0; i < pieceArr.Length; i++)
@@ -191,7 +191,7 @@ public class BoardManager : MonoBehaviour
         return piece;
     }
 
-    public int getPieceArrIndex(Vector2 position)
+    public int getPieceArrIndex(Vector3 position)
     {
         int index = -1;
         for (int i = 0; i < pieceArr.Length; i++)
@@ -205,7 +205,7 @@ public class BoardManager : MonoBehaviour
         return index;
     }
 
-    public Tile getTile(Vector2 position)
+    public Tile getTile(Vector3 position)
     {
         Tile tile = null;
         for (int i = 0; i < tileArr.Length; i++)
@@ -218,7 +218,7 @@ public class BoardManager : MonoBehaviour
         }
         return tile;
     }
-    public int getTileArrIndex(Vector2 position)
+    public int getTileArrIndex(Vector3 position)
     {
         int index = -1;
         for (int i = 0; i < tileArr.Length; i++)
