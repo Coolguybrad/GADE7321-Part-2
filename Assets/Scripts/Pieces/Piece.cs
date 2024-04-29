@@ -14,10 +14,14 @@ public class Piece : MonoBehaviour
 
     [SerializeField] private TMP_Text powerValDisplay;
 
+    [SerializeField] private Tile currentTile;
+
     void Start()
     {
         powerVal = initialPower;
         powerValDisplay.text = powerVal.ToString();
+
+        currentTile = FindCurrentTile(location);
     }
 
     private void Awake()
@@ -54,11 +58,16 @@ public class Piece : MonoBehaviour
         location = pos;
         this.gameObject.transform.position = new Vector3(pos.x, pos.y, pos.z);
         powerValDisplay.text = powerVal.ToString();
+        currentTile = FindCurrentTile(location);
     }
 
     public bool getBushBool() 
     {
         return canBushWalk;
+    }
+    public bool getJumperBool()
+    {
+        return jumper;
     }
 
     public void setPowerVal(int newPower)
@@ -74,6 +83,24 @@ public class Piece : MonoBehaviour
     public void MinorSpellingError()
     {
         Destroy(this.gameObject);
+    }
+
+    public Tile FindCurrentTile(Vector3 targetPos)
+    {
+        Tile tileToFind = null;
+
+        int i = 0;
+
+        foreach (Tile tile in BoardManager.Instance.tileArr)
+        {
+            if (BoardManager.Instance.tileArr[i].getLocation().x == targetPos.x && BoardManager.Instance.tileArr[i].getLocation().z == targetPos.z)
+            {
+                tileToFind = tile;
+            }
+            i++;
+        }
+
+        return tileToFind;
     }
 
 }

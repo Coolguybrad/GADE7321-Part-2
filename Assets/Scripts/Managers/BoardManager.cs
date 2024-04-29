@@ -4,7 +4,7 @@ using UnityEngine;
 public class BoardManager : MonoBehaviour
 {
     public static BoardManager Instance;
-    [SerializeField] private Tile[] tileArr;
+    [SerializeField] public Tile[] tileArr;
     [SerializeField] private Piece[] pieceArr;
     [SerializeField] private Tile ClickedTile;
 
@@ -75,6 +75,10 @@ public class BoardManager : MonoBehaviour
                 if (getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).gameObject.tag == "Bush")
                 {
                     if (piece.getBushBool())
+                    {
+                        getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).showPossibleMove();
+                    }
+                    if (piece.getJumperBool())
                     {
                         getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).showPossibleMove();
                     }
