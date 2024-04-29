@@ -2325,7 +2325,7 @@ MonoBehaviour:
   canBushWalk: 0
   jumper: 0
   team: 0
-  initialPower: 2
+  initialPower: 4
   powerVal: 0
   powerValDisplay: {fileID: 12398729}
   currentTile: {fileID: 0}
@@ -6532,7 +6532,7 @@ MonoBehaviour:
   canBushWalk: 1
   jumper: 0
   team: 0
-  initialPower: 5
+  initialPower: 1
   powerVal: 0
   powerValDisplay: {fileID: 2058314431}
   currentTile: {fileID: 0}
@@ -6836,7 +6836,7 @@ MonoBehaviour:
   canBushWalk: 0
   jumper: 1
   team: 0
-  initialPower: 0
+  initialPower: 3
   powerVal: 0
   powerValDisplay: {fileID: 1891461438}
   currentTile: {fileID: 0}
