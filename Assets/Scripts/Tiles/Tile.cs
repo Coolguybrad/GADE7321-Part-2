@@ -24,7 +24,7 @@ public class Tile : MonoBehaviour
 
     [SerializeField] private TileTypeEnum thisTileType;
 
-    [SerializeField] private Tile jumpTarget;
+    [SerializeField] private Tile[] jumpTarget;
 
 
     private void Update()
@@ -96,7 +96,7 @@ public class Tile : MonoBehaviour
         return thisTileType;
     }
 
-    public Tile getJumpTarget()
+    public Tile[] getJumpTarget()
     {
         return jumpTarget;
     }

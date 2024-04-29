@@ -80,7 +80,7 @@ public class BoardManager : MonoBehaviour
                     }
                     if (piece.getJumperBool())
                     {
-                        getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).showPossibleMove();
+                        piece.FindCurrentTile(piece.getLocation()).getJumpTarget()[0].showPossibleMove();
                     }
                 }
                 else
@@ -105,7 +105,10 @@ public class BoardManager : MonoBehaviour
                     {
                         getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).showPossibleMove();
                     }
-
+                    if (piece.getJumperBool())
+                    {
+                        piece.FindCurrentTile(piece.getLocation()).getJumpTarget()[1].showPossibleMove();
+                    }
                 }
                 else
                 {
@@ -129,7 +132,10 @@ public class BoardManager : MonoBehaviour
                     {
                         getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).showPossibleMove();
                     }
-
+                    if (piece.getJumperBool())
+                    {
+                        piece.FindCurrentTile(piece.getLocation()).getJumpTarget()[0].showPossibleMove();
+                    }
                 }
                 else
                 {
@@ -154,7 +160,10 @@ public class BoardManager : MonoBehaviour
                     {
                         getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).showPossibleMove();
                     }
-
+                    if (piece.getJumperBool())
+                    {
+                        piece.FindCurrentTile(piece.getLocation()).getJumpTarget()[0].showPossibleMove();
+                    }
                 }
                 else
                 {
