@@ -19,7 +19,7 @@ public class Piece : MonoBehaviour
     void Start()
     {
         powerVal = initialPower;
-        powerValDisplay.text = powerVal.ToString();
+        powerValDisplay.text = powerVal.ToString() + "/" + initialPower.ToString();
 
         currentTile = FindCurrentTile(location);
     }
@@ -57,7 +57,7 @@ public class Piece : MonoBehaviour
     {
         location = pos;
         this.gameObject.transform.position = new Vector3(pos.x, pos.y, pos.z);
-        powerValDisplay.text = powerVal.ToString();
+        powerValDisplay.text = powerVal.ToString() + "/" + initialPower.ToString();
         currentTile = FindCurrentTile(location);
     }
 

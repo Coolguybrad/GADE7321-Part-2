@@ -65,9 +65,21 @@ public class PieceManager : MonoBehaviour
                 selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.54f, BoardManager.Instance.getClickedTile().getLocation().z));
                 BoardManager.Instance.wipePossibleMoves();
             }
+            else if (BoardManager.Instance.getClickedTile().GetTileType() == Tile.TileTypeEnum.rough)
+            {
+                selectedPiece.setPowerVal(selectedPiece.getInitialPower()-1);
+                selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
+                BoardManager.Instance.wipePossibleMoves();
+            }
             else if (BoardManager.Instance.getClickedTile().GetTileType() == Tile.TileTypeEnum.bush)
             {
                 selectedPiece.setPowerVal(selectedPiece.getInitialPower());
+                selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
+                BoardManager.Instance.wipePossibleMoves();
+            }
+            else if (BoardManager.Instance.getClickedTile().GetTileType() == Tile.TileTypeEnum.trap)
+            {
+                selectedPiece.setPowerVal(0);
                 selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
                 BoardManager.Instance.wipePossibleMoves();
             }
