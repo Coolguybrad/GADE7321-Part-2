@@ -53,8 +53,18 @@ public class PieceManager : MonoBehaviour
     {
         if (BoardManager.Instance.getClickedTile().getPossibleMove().activeInHierarchy)
         {
-            selectedPiece.movePiece(BoardManager.Instance.getClickedTile().getLocation());
-            BoardManager.Instance.wipePossibleMoves();
+            if(BoardManager.Instance.getClickedTile().GetTileType()==Tile.TileTypeEnum.normal)
+            {
+                selectedPiece.setPowerVal(selectedPiece.getInitialPower());
+                selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
+                BoardManager.Instance.wipePossibleMoves();
+            }
+            else if (BoardManager.Instance.getClickedTile().GetTileType() == Tile.TileTypeEnum.high)
+            {
+                selectedPiece.setPowerVal(selectedPiece.getInitialPower() + 1);
+                selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.54f, BoardManager.Instance.getClickedTile().getLocation().z));
+                BoardManager.Instance.wipePossibleMoves();
+            }
         }
     }
 

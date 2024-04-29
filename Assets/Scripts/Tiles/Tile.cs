@@ -12,7 +12,7 @@ public class Tile : MonoBehaviour
 
     [SerializeField] private Vector3 location;
 
-    private enum TileTypeEnum
+    public enum TileTypeEnum
     {
         normal,
         high,
@@ -89,4 +89,8 @@ public class Tile : MonoBehaviour
         return occupiedBy;
     }
         
+    public TileTypeEnum GetTileType()
+    {
+        return thisTileType;
+    }
 }

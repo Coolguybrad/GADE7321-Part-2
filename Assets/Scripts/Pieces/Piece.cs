@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Piece : MonoBehaviour
@@ -8,11 +9,15 @@ public class Piece : MonoBehaviour
     [SerializeField] private bool jumper;
 
     [SerializeField] private int team;
+    [SerializeField] private int initialPower;
     [SerializeField] private int powerVal;
+
+    [SerializeField] private TMP_Text powerValDisplay;
 
     void Start()
     {
-
+        powerVal = initialPower;
+        powerValDisplay.text = powerVal.ToString();
     }
 
     private void Awake()
@@ -47,7 +52,8 @@ public class Piece : MonoBehaviour
     public void movePiece(Vector3 pos) 
     {
         location = pos;
-        this.gameObject.transform.position = new Vector3(pos.x, gameObject.transform.position.y, pos.z);
+        this.gameObject.transform.position = new Vector3(pos.x, pos.y, pos.z);
+        powerValDisplay.text = powerVal.ToString();
     }
 
     public bool getBushBool() 
@@ -60,9 +66,9 @@ public class Piece : MonoBehaviour
         powerVal = newPower;
     }
 
-    public int getPowerVal()
+    public int getInitialPower()
     {
-        return powerVal;
+        return initialPower;
     }
 
     public void MinorSpellingError()
