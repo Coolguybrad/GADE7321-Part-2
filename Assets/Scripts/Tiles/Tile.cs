@@ -8,7 +8,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private GameObject possibleMove;
     [SerializeField] private bool occupied = false;
 
-    private GameObject occupiedBy;
+    [SerializeField] private Piece occupiedBy;
 
     [SerializeField] private Vector3 location;
 
@@ -81,12 +81,12 @@ public class Tile : MonoBehaviour
         return possibleMove;
     }
 
-    public void setOccupiedBy(GameObject theNicePiece)
+    public void setOccupiedBy(Piece theNicePiece)
     {
         occupiedBy = theNicePiece;
     }
 
-    public GameObject getOccupiedBy()
+    public Piece getOccupiedBy()
     {
         return occupiedBy;
     }
