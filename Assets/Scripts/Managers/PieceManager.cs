@@ -35,7 +35,6 @@ public class PieceManager : MonoBehaviour
         }
         else
         {
-
             BoardManager.Instance.wipePossibleMoves();
         }
     }

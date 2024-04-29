@@ -37,24 +37,24 @@ public class BoardManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        occupy();
+        //occupy();
     }
 
-    public void occupy()
-    {
-        for (int i = 0; i < tileArr.Length; i++)
-        {
-            tileArr[i].setOccupancy(false);
-            for (int j = 0; j < pieceArr.Length; j++)
-            {
-                if (tileArr[i].getLocation() == pieceArr[j].getLocation())
-                {
-                    tileArr[i].setOccupancy(true);
-                    break;
-                }
-            }
-        }
-    }
+    //public void occupy()
+    //{
+    //    //for (int i = 0; i < tileArr.Length; i++)
+    //    //{
+    //    //    tileArr[i].setOccupancy(false);
+    //    //    for (int j = 0; j < pieceArr.Length; j++)
+    //    //    {
+    //    //        if (tileArr[i].getLocation() == pieceArr[j].getLocation())
+    //    //        {
+    //    //            tileArr[i].setOccupancy(true);
+    //    //            break;
+    //    //        }
+    //    //    }
+    //    //}
+    //}
 
     public void setClickedTile(Tile tile)
     {
@@ -93,7 +93,7 @@ public class BoardManager : MonoBehaviour
         catch (Exception e)
         {
 
-            Debug.Log("Tile at " + (piece.getLocation().x - 1) + "," + piece.getLocation().z + " Does not exist");
+            //Debug.Log("Tile at " + (piece.getLocation().x - 1) + "," + piece.getLocation().z + " Does not exist");
         }
         try
         {
@@ -120,7 +120,7 @@ public class BoardManager : MonoBehaviour
         catch (Exception e)
         {
 
-            Debug.Log("Tile at " + (piece.getLocation().x + 1) + "," + piece.getLocation().z + " Does not exist");
+            //Debug.Log("Tile at " + (piece.getLocation().x + 1) + "," + piece.getLocation().z + " Does not exist");
         }
         try
         {
@@ -147,7 +147,7 @@ public class BoardManager : MonoBehaviour
         catch (Exception e)
         {
 
-            Debug.Log("Tile at " + piece.getLocation().x + "," + (piece.getLocation().z - 1) + " Does not exist");
+            //Debug.Log("Tile at " + piece.getLocation().x + "," + (piece.getLocation().z - 1) + " Does not exist");
         }
         try
         {
@@ -175,7 +175,7 @@ public class BoardManager : MonoBehaviour
         catch (Exception e)
         {
 
-            Debug.Log("Tile at " + piece.getLocation().x + "," + (piece.getLocation().z + 1) + " Does not exist");
+            //Debug.Log("Tile at " + piece.getLocation().x + "," + (piece.getLocation().z + 1) + " Does not exist");
         }
 
     }

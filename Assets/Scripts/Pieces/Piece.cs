@@ -22,6 +22,7 @@ public class Piece : MonoBehaviour
         powerValDisplay.text = powerVal.ToString() + "/" + initialPower.ToString();
 
         currentTile = FindCurrentTile(location);
+        currentTile.setOccupancy(true);
     }
 
     private void Awake()
@@ -55,10 +56,12 @@ public class Piece : MonoBehaviour
 
     public void movePiece(Vector3 pos) 
     {
+        currentTile.setOccupancy(false);
         location = pos;
         this.gameObject.transform.position = new Vector3(pos.x, pos.y, pos.z);
         powerValDisplay.text = powerVal.ToString() + "/" + initialPower.ToString();
         currentTile = FindCurrentTile(location);
+        currentTile.setOccupancy(true);
     }
 
     public bool getBushBool() 
