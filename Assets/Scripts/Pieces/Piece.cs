@@ -76,6 +76,11 @@ public class Piece : MonoBehaviour
         return jumper;
     }
 
+    public int getPowerVal()
+    {
+        return powerVal;
+    }
+
     public void setPowerVal(int newPower)
     {
         powerVal = newPower;
@@ -84,6 +89,11 @@ public class Piece : MonoBehaviour
     public int getInitialPower()
     {
         return initialPower;
+    }
+
+    public int getTeam()
+    {
+        return team;
     }
 
     public void MinorSpellingError()

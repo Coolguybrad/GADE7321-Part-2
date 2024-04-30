@@ -88,7 +88,16 @@ public class BoardManager : MonoBehaviour
                     getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).showPossibleMove();
                 }
             }
-
+            else
+            {
+                if (getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).getOccupiedBy().getTeam() != piece.getTeam())
+                {
+                    if (piece.getPowerVal() > getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).getOccupiedBy().getPowerVal())
+                    {
+                        getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).showPossibleMove();
+                    }
+                }
+            }
         }
         catch (Exception e)
         {
@@ -113,6 +122,16 @@ public class BoardManager : MonoBehaviour
                 else
                 {
                     getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).showPossibleMove();
+                }
+            }
+            else
+            {
+                if (getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).getOccupiedBy().getTeam() != piece.getTeam())
+                {
+                    if (piece.getPowerVal() > getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).getOccupiedBy().getPowerVal())
+                    {
+                        getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).showPossibleMove();
+                    }
                 }
             }
 
@@ -142,6 +161,16 @@ public class BoardManager : MonoBehaviour
                     getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).showPossibleMove();
                 }
             }
+            else
+            {
+                if (getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).getOccupiedBy().getTeam() != piece.getTeam())
+                {
+                    if (piece.getPowerVal() > getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).getOccupiedBy().getPowerVal())
+                    {
+                        getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).showPossibleMove();
+                    }
+                }
+            }
 
         }
         catch (Exception e)
@@ -169,7 +198,16 @@ public class BoardManager : MonoBehaviour
                 {
                     getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).showPossibleMove();
                 }
-
+            }
+            else
+            {
+                if (getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).getOccupiedBy().getTeam() != piece.getTeam())
+                {
+                    if (piece.getPowerVal() > getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).getOccupiedBy().getPowerVal())
+                    {
+                        getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).showPossibleMove();
+                    }
+                }
             }
         }
         catch (Exception e)

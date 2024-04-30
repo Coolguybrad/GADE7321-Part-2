@@ -52,36 +52,39 @@ public class PieceManager : MonoBehaviour
     {
         if (BoardManager.Instance.getClickedTile().getPossibleMove().activeInHierarchy)
         {
-            if(BoardManager.Instance.getClickedTile().GetTileType()==Tile.TileTypeEnum.normal)
+            if (BoardManager.Instance.getClickedTile().getOccupancy())
             {
-                selectedPiece.setPowerVal(selectedPiece.getInitialPower());
-                selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
-                BoardManager.Instance.wipePossibleMoves();
+                BoardManager.Instance.getClickedTile().getOccupiedBy().MinorSpellingError();
             }
-            else if (BoardManager.Instance.getClickedTile().GetTileType() == Tile.TileTypeEnum.high)
+
+            switch (BoardManager.Instance.getClickedTile().GetTileType())
             {
-                selectedPiece.setPowerVal(selectedPiece.getInitialPower() + 1);
-                selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.54f, BoardManager.Instance.getClickedTile().getLocation().z));
-                BoardManager.Instance.wipePossibleMoves();
-            }
-            else if (BoardManager.Instance.getClickedTile().GetTileType() == Tile.TileTypeEnum.rough)
-            {
-                selectedPiece.setPowerVal(selectedPiece.getInitialPower()-1);
-                selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
-                BoardManager.Instance.wipePossibleMoves();
-            }
-            else if (BoardManager.Instance.getClickedTile().GetTileType() == Tile.TileTypeEnum.bush)
-            {
-                selectedPiece.setPowerVal(selectedPiece.getInitialPower());
-                selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
-                BoardManager.Instance.wipePossibleMoves();
-            }
-            else if (BoardManager.Instance.getClickedTile().GetTileType() == Tile.TileTypeEnum.trap)
-            {
-                selectedPiece.setPowerVal(0);
-                selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
-                BoardManager.Instance.wipePossibleMoves();
-            }
+                case Tile.TileTypeEnum.normal:
+                    selectedPiece.setPowerVal(selectedPiece.getInitialPower());
+                    selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
+                    BoardManager.Instance.wipePossibleMoves();
+                    break;
+                case Tile.TileTypeEnum.bush:
+                    selectedPiece.setPowerVal(selectedPiece.getInitialPower());
+                    selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
+                    BoardManager.Instance.wipePossibleMoves();
+                    break;
+                case Tile.TileTypeEnum.trap:
+                    selectedPiece.setPowerVal(0);
+                    selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
+                    BoardManager.Instance.wipePossibleMoves();
+                    break;
+                case Tile.TileTypeEnum.high:
+                    selectedPiece.setPowerVal(selectedPiece.getInitialPower() + 1);
+                    selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.54f, BoardManager.Instance.getClickedTile().getLocation().z));
+                    BoardManager.Instance.wipePossibleMoves();
+                    break;
+                case Tile.TileTypeEnum.rough:
+                    selectedPiece.setPowerVal(selectedPiece.getInitialPower() - 1);
+                    selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
+                    BoardManager.Instance.wipePossibleMoves();
+                    break;
+            }            
         }
     }
 
