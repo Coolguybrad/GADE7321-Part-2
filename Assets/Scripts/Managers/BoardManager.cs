@@ -72,7 +72,7 @@ public class BoardManager : MonoBehaviour
         {
             if (!getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).getOccupancy())
             {
-                if (getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).gameObject.tag == "Bush")
+                if (getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).GetTileType() == Tile.TileTypeEnum.bush)
                 {
                     if (piece.getBushBool())
                     {
@@ -80,7 +80,10 @@ public class BoardManager : MonoBehaviour
                     }
                     if (piece.getJumperBool())
                     {
-                        piece.FindCurrentTile(piece.getLocation()).getJumpTarget()[0].showPossibleMove();
+                        if (!piece.FindCurrentTile(piece.getLocation()).getJumpTarget()[0].getOccupancy())
+                        {
+                            piece.FindCurrentTile(piece.getLocation()).getJumpTarget()[0].showPossibleMove();
+                        }
                     }
                 }
                 else
@@ -92,7 +95,7 @@ public class BoardManager : MonoBehaviour
             {
                 if (getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).getOccupiedBy().getTeam() != piece.getTeam())
                 {
-                    if (piece.getPowerVal() > getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).getOccupiedBy().getPowerVal())
+                    if (piece.getPowerVal() >= getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).getOccupiedBy().getPowerVal())
                     {
                         getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).showPossibleMove();
                     }
@@ -108,7 +111,7 @@ public class BoardManager : MonoBehaviour
         {
             if (!getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).getOccupancy())
             {
-                if (getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).gameObject.tag == "Bush")
+                if (getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).GetTileType() == Tile.TileTypeEnum.bush)
                 {
                     if (piece.getBushBool())
                     {
@@ -116,7 +119,10 @@ public class BoardManager : MonoBehaviour
                     }
                     if (piece.getJumperBool())
                     {
-                        piece.FindCurrentTile(piece.getLocation()).getJumpTarget()[1].showPossibleMove();
+                        if (!piece.FindCurrentTile(piece.getLocation()).getJumpTarget()[1].getOccupancy())
+                        {
+                            piece.FindCurrentTile(piece.getLocation()).getJumpTarget()[1].showPossibleMove();
+                        }
                     }
                 }
                 else
@@ -128,7 +134,7 @@ public class BoardManager : MonoBehaviour
             {
                 if (getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).getOccupiedBy().getTeam() != piece.getTeam())
                 {
-                    if (piece.getPowerVal() > getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).getOccupiedBy().getPowerVal())
+                    if (piece.getPowerVal() >= getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).getOccupiedBy().getPowerVal())
                     {
                         getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).showPossibleMove();
                     }
@@ -145,7 +151,7 @@ public class BoardManager : MonoBehaviour
         {
             if (!getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).getOccupancy())
             {
-                if (getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).gameObject.tag == "Bush")
+                if (getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).GetTileType() == Tile.TileTypeEnum.bush)
                 {
                     if (piece.getBushBool())
                     {
@@ -153,7 +159,10 @@ public class BoardManager : MonoBehaviour
                     }
                     if (piece.getJumperBool())
                     {
-                        piece.FindCurrentTile(piece.getLocation()).getJumpTarget()[0].showPossibleMove();
+                        if (!piece.FindCurrentTile(piece.getLocation()).getJumpTarget()[0].getOccupancy())
+                        {
+                            piece.FindCurrentTile(piece.getLocation()).getJumpTarget()[0].showPossibleMove();
+                        }
                     }
                 }
                 else
@@ -165,7 +174,7 @@ public class BoardManager : MonoBehaviour
             {
                 if (getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).getOccupiedBy().getTeam() != piece.getTeam())
                 {
-                    if (piece.getPowerVal() > getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).getOccupiedBy().getPowerVal())
+                    if (piece.getPowerVal() >= getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).getOccupiedBy().getPowerVal())
                     {
                         getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).showPossibleMove();
                     }
@@ -183,7 +192,7 @@ public class BoardManager : MonoBehaviour
 
             if (!getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).getOccupancy())
             {
-                if (getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).gameObject.tag == "Bush")
+                if (getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).GetTileType() == Tile.TileTypeEnum.bush)
                 {
                     if (piece.getBushBool())
                     {
@@ -191,7 +200,10 @@ public class BoardManager : MonoBehaviour
                     }
                     if (piece.getJumperBool())
                     {
-                        piece.FindCurrentTile(piece.getLocation()).getJumpTarget()[0].showPossibleMove();
+                        if(!piece.FindCurrentTile(piece.getLocation()).getJumpTarget()[0].getOccupancy())
+                        {
+                            piece.FindCurrentTile(piece.getLocation()).getJumpTarget()[0].showPossibleMove();
+                        }
                     }
                 }
                 else
@@ -203,7 +215,7 @@ public class BoardManager : MonoBehaviour
             {
                 if (getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).getOccupiedBy().getTeam() != piece.getTeam())
                 {
-                    if (piece.getPowerVal() > getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).getOccupiedBy().getPowerVal())
+                    if (piece.getPowerVal() >= getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).getOccupiedBy().getPowerVal())
                     {
                         getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).showPossibleMove();
                     }
