@@ -42,12 +42,15 @@ public class Piece : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        if(TurnHandler.Instance.teamTurn ==  team)
         {
-            BoardManager.Instance.wipePossibleMoves();
-            Debug.Log(this.gameObject + "Selected");
-            PieceManager.Instance.setSelectedPiece(this.gameObject.GetComponent<Piece>());
-        }        
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                BoardManager.Instance.wipePossibleMoves();
+                Debug.Log(this.gameObject + "Selected");
+                PieceManager.Instance.setSelectedPiece(this.gameObject.GetComponent<Piece>());
+            }
+        }           
     }
 
     public Vector3 getLocation()

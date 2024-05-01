@@ -21,10 +21,6 @@ public class PieceManager : MonoBehaviour
             return;
         }
     }
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -84,7 +80,18 @@ public class PieceManager : MonoBehaviour
                     selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
                     BoardManager.Instance.wipePossibleMoves();
                     break;
-            }            
+            }
+
+            if(TurnHandler.Instance.teamTurn == 0)
+            {
+                TurnHandler.Instance.SetRedTurn();
+            }
+            else
+            {
+                TurnHandler.Instance.SetBlueTurn();
+            }
+
+            selectedPiece = null;
         }
     }
 
