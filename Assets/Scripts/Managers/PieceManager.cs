@@ -65,7 +65,7 @@ public class PieceManager : MonoBehaviour
                     BoardManager.Instance.wipePossibleMoves();
                     break;
                 case Tile.TileTypeEnum.bush:
-                    selectedPiece.setPowerVal(selectedPiece.getInitialPower());
+                    selectedPiece.setPowerVal(100);
                     selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
                     BoardManager.Instance.wipePossibleMoves();
                     break;
