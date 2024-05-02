@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Piece : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] private Vector3 location;
     [SerializeField] private bool canBushWalk;
     [SerializeField] private bool jumper;
@@ -14,21 +13,20 @@ public class Piece : MonoBehaviour
 
     [SerializeField] private TMP_Text powerValDisplay;
 
+
     [SerializeField] private Tile currentTile;
 
     void Start()
     {
+        location = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+
         powerVal = initialPower;
         powerValDisplay.text = powerVal.ToString() + "/" + initialPower.ToString();
 
         currentTile = FindCurrentTile(location);
+
         currentTile.setOccupancy(true);
         currentTile.setOccupiedBy(this);
-    }
-
-    private void Awake()
-    {
-        location = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
     }
 
     // Update is called once per frame
@@ -112,6 +110,7 @@ public class Piece : MonoBehaviour
 
         foreach (Tile tile in BoardManager.Instance.tileArr)
         {
+            //Debug.Log("test" + i);
             if (BoardManager.Instance.tileArr[i].getLocation().x == targetPos.x && BoardManager.Instance.tileArr[i].getLocation().z == targetPos.z)
             {
                 tileToFind = tile;

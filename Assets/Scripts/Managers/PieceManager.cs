@@ -5,7 +5,6 @@ using UnityEngine;
 public class PieceManager : MonoBehaviour
 {
     public static PieceManager Instance;
-    // Start is called before the first frame update
     [SerializeField] private Piece selectedPiece;
 
     private void Awake()
