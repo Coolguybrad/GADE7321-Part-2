@@ -5,9 +5,10 @@ public class BoardManager : MonoBehaviour
 {
     public static BoardManager Instance;
     [SerializeField] public Tile[] tileArr;
-    [SerializeField] private Piece[] pieceArr;
     [SerializeField] private Tile ClickedTile;
 
+    public Tile blueGoal;
+    public Tile redGoal;
 
     private void Awake()
     {
@@ -53,6 +54,20 @@ public class BoardManager : MonoBehaviour
                         }
                     }
                 }
+                else if(getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).GetTileType() == Tile.TileTypeEnum.blueGoal)
+                {
+                    if(piece.getTeam() == 0)
+                    {
+                        getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).showPossibleMove();
+                    }                    
+                }
+                else if (getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).GetTileType() == Tile.TileTypeEnum.redGoal)
+                {
+                    if (piece.getTeam() == 1)
+                    {
+                        getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).showPossibleMove();
+                    }
+                }
                 else
                 {
                     getTile(new Vector3(piece.getLocation().x - 1, 0, piece.getLocation().z)).showPossibleMove();
@@ -90,6 +105,20 @@ public class BoardManager : MonoBehaviour
                         {
                             piece.FindCurrentTile(piece.getLocation()).getJumpTarget()[1].showPossibleMove();
                         }
+                    }
+                }
+                else if (getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).GetTileType() == Tile.TileTypeEnum.blueGoal)
+                {
+                    if (piece.getTeam() == 0)
+                    {
+                        getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).showPossibleMove();
+                    }
+                }
+                else if (getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).GetTileType() == Tile.TileTypeEnum.redGoal)
+                {
+                    if (piece.getTeam() == 1)
+                    {
+                        getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).showPossibleMove();
                     }
                 }
                 else
@@ -130,6 +159,20 @@ public class BoardManager : MonoBehaviour
                         {
                             piece.FindCurrentTile(piece.getLocation()).getJumpTarget()[0].showPossibleMove();
                         }
+                    }
+                }
+                else if (getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).GetTileType() == Tile.TileTypeEnum.blueGoal)
+                {
+                    if (piece.getTeam() == 0)
+                    {
+                        getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).showPossibleMove();
+                    }
+                }
+                else if (getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).GetTileType() == Tile.TileTypeEnum.redGoal)
+                {
+                    if (piece.getTeam() == 1)
+                    {
+                        getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).showPossibleMove();
                     }
                 }
                 else
@@ -173,6 +216,20 @@ public class BoardManager : MonoBehaviour
                         }
                     }
                 }
+                else if (getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).GetTileType() == Tile.TileTypeEnum.blueGoal)
+                {
+                    if (piece.getTeam() == 0)
+                    {
+                        getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).showPossibleMove();
+                    }
+                }
+                else if (getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).GetTileType() == Tile.TileTypeEnum.redGoal)
+                {
+                    if (piece.getTeam() == 1)
+                    {
+                        getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).showPossibleMove();
+                    }
+                }
                 else
                 {
                     getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z + 1)).showPossibleMove();
@@ -203,36 +260,6 @@ public class BoardManager : MonoBehaviour
         {
             tileArr[i].hidePossibleMove();
         }
-    }
-
-
-
-    public Piece getPiece(Vector3 position)
-    {
-        Piece piece = null;
-        for (int i = 0; i < pieceArr.Length; i++)
-        {
-            if (pieceArr[i].getLocation().Equals(position))
-            {
-                piece = pieceArr[i];
-                break;
-            }
-        }
-        return piece;
-    }
-
-    public int getPieceArrIndex(Vector3 position)
-    {
-        int index = -1;
-        for (int i = 0; i < pieceArr.Length; i++)
-        {
-            if (pieceArr[i].getLocation().Equals(position))
-            {
-                index = i;
-                break;
-            }
-        }
-        return index;
     }
 
     public Tile getTile(Vector3 position)

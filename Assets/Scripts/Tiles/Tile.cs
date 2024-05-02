@@ -19,7 +19,8 @@ public class Tile : MonoBehaviour
         bush,
         rough,
         trap,
-        goal
+        blueGoal,
+        redGoal
     }
 
     [SerializeField] private TileTypeEnum thisTileType;

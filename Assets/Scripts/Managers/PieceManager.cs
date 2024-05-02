@@ -7,6 +7,9 @@ public class PieceManager : MonoBehaviour
     public static PieceManager Instance;
     [SerializeField] private Piece selectedPiece;
 
+    [SerializeField] private Piece[] blueArr;
+    [SerializeField] private Piece[] redArr;
+
     private void Awake()
     {
         if (Instance == null)
@@ -49,6 +52,58 @@ public class PieceManager : MonoBehaviour
         {
             if (BoardManager.Instance.getClickedTile().getOccupancy())
             {
+                int i = 0;
+
+                int nullCount = 1;
+
+                if(TurnHandler.Instance.teamTurn == 0)
+                {
+                    foreach(Piece piece in redArr)
+                    {
+                        if (BoardManager.Instance.getClickedTile().getOccupiedBy() == piece)
+                        {
+                            redArr[i] = null;
+                        }
+                        if(piece == null)
+                        {
+                            nullCount++;
+                        }
+
+                        i++;
+                    }
+
+                    if(nullCount == redArr.Length)
+                    {
+                        BlueWin();
+                    }
+
+                    Debug.Log(nullCount);
+                }
+                else
+                {
+                    foreach (Piece piece in blueArr)
+                    {
+                        if (BoardManager.Instance.getClickedTile().getOccupiedBy() == piece)
+                        {
+                            blueArr[i] = null;
+                        }
+                        if (piece == null)
+                        {
+                            nullCount++;
+                        }
+
+                        i++;
+                    }
+
+                    if (nullCount == blueArr.Length)
+                    {
+                        RedWin();
+                    }
+
+                    Debug.Log(nullCount);
+
+                }
+
                 BoardManager.Instance.getClickedTile().getOccupiedBy().MinorSpellingError();
             }
 
@@ -79,23 +134,53 @@ public class PieceManager : MonoBehaviour
                     selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
                     BoardManager.Instance.wipePossibleMoves();
                     break;
+                case Tile.TileTypeEnum.blueGoal:
+                    selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
+                    break;
+                case Tile.TileTypeEnum.redGoal:
+                    selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
+                    break;
             }
 
             if(TurnHandler.Instance.teamTurn == 0)
             {
-                TurnHandler.Instance.SetRedTurn();
+                if (BoardManager.Instance.getClickedTile().GetTileType() == Tile.TileTypeEnum.blueGoal)
+                {
+                    BlueWin();
+                }
+                else
+                {
+                    TurnHandler.Instance.SetRedTurn();
+                }
             }
             else
             {
-                TurnHandler.Instance.SetBlueTurn();
+                if(BoardManager.Instance.getClickedTile().GetTileType() == Tile.TileTypeEnum.redGoal)
+                {
+                    RedWin();
+                }
+                else
+                {
+                    TurnHandler.Instance.SetBlueTurn();
+                }
             }
 
             selectedPiece = null;
-        }
+        }      
+
+
     }
 
+    public void BlueWin()
+    {
+        TurnHandler.Instance.teamTurn = 2;
+        TurnHandler.Instance.turnText.text = "BLUE WINS!";
+    }
 
-    
+    public void RedWin()
+    {
+        TurnHandler.Instance.teamTurn = 2;
+        TurnHandler.Instance.turnText.text = "RED WINS!";
+    }
 
-    
 }

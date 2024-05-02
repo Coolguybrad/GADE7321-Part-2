@@ -7,7 +7,7 @@ public class TurnHandler : MonoBehaviour
 {
     public int teamTurn;
 
-    [SerializeField] private TMP_Text turnText;
+    public TMP_Text turnText;
 
     public static TurnHandler Instance;
 

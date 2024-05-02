@@ -21,7 +21,19 @@ public class Piece : MonoBehaviour
         location = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
 
         powerVal = initialPower;
-        powerValDisplay.text = powerVal.ToString() + "/" + initialPower.ToString();
+
+        if (canBushWalk)
+        {
+            powerValDisplay.text = "B\n" + powerVal.ToString() + "/" + initialPower.ToString();
+        }
+        else if (jumper)
+        {
+            powerValDisplay.text = "J\n" + powerVal.ToString() + "/" + initialPower.ToString();
+        }
+        else
+        {
+            powerValDisplay.text = powerVal.ToString() + "/" + initialPower.ToString();
+        }
 
         currentTile = FindCurrentTile(location);
 
@@ -45,7 +57,7 @@ public class Piece : MonoBehaviour
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 BoardManager.Instance.wipePossibleMoves();
-                Debug.Log(this.gameObject + "Selected");
+                //Debug.Log(this.gameObject + "Selected");
                 PieceManager.Instance.setSelectedPiece(this.gameObject.GetComponent<Piece>());
             }
         }           
@@ -62,7 +74,20 @@ public class Piece : MonoBehaviour
         currentTile.setOccupiedBy(null);
         location = pos;
         this.gameObject.transform.position = new Vector3(pos.x, pos.y, pos.z);
-        powerValDisplay.text = powerVal.ToString() + "/" + initialPower.ToString();
+
+        if(canBushWalk)
+        {
+            powerValDisplay.text = "B\n" + powerVal.ToString() + "/" + initialPower.ToString();
+        }
+        else if(jumper)
+        {
+            powerValDisplay.text = "J\n"+powerVal.ToString() + "/" + initialPower.ToString();
+        }
+        else 
+        {
+            powerValDisplay.text = powerVal.ToString() + "/" + initialPower.ToString();
+        }
+
         currentTile = FindCurrentTile(location);
         currentTile.setOccupancy(true);
         currentTile.setOccupiedBy(this);
