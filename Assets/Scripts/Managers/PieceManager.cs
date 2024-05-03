@@ -12,7 +12,6 @@ public class PieceManager : MonoBehaviour
     [SerializeField] private BoardManager boardManager;
     [SerializeField] private TurnHandler turnHandler;
 
-    // Update is called once per frame
     void Update()
     {
         if (selectedPiece != null)
@@ -136,10 +135,6 @@ public class PieceManager : MonoBehaviour
                 {
                     BlueWin();
                 }
-
-                //Debug.Log(redArr.Length);
-
-                //Debug.Log(nullCount);
             }
             else
             {
@@ -161,10 +156,6 @@ public class PieceManager : MonoBehaviour
                 {
                     RedWin();
                 }
-
-                //Debug.Log(blueArr.Length);
-
-                //Debug.Log(nullCount);
             }
         }
     }
