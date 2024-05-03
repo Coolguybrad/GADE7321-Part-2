@@ -3,26 +3,11 @@ using UnityEngine;
 
 public class BoardManager : MonoBehaviour
 {
-    public static BoardManager Instance;
     [SerializeField] public Tile[] tileArr;
     [SerializeField] private Tile ClickedTile;
 
     public Tile blueGoal;
     public Tile redGoal;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-    }
 
     public void setClickedTile(Tile tile)
     {

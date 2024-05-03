@@ -12,6 +12,9 @@ public class Tile : MonoBehaviour
 
     [SerializeField] private Vector3 location;
 
+    [SerializeField] private BoardManager boardManager;
+    [SerializeField] private PieceManager pieceManager;
+
     public enum TileTypeEnum
     {
         normal,
@@ -45,8 +48,8 @@ public class Tile : MonoBehaviour
 
     private void OnMouseDown()
     {
-        BoardManager.Instance.setClickedTile(this);
-        PieceManager.Instance.MoveSelectedPiece();
+        boardManager.setClickedTile(this);
+        pieceManager.MoveSelectedPiece();
 
     }
     private void OnMouseExit()

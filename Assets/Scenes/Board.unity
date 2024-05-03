@@ -221,6 +221,14 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: jumpTarget.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -457,6 +465,9 @@ MonoBehaviour:
   initialPower: 1
   powerVal: 0
   powerValDisplay: {fileID: 1780031738}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!65 &49864198
 BoxCollider:
@@ -584,6 +595,9 @@ MonoBehaviour:
   initialPower: 0
   powerVal: 0
   powerValDisplay: {fileID: 197238540}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!65 &50972484
 BoxCollider:
@@ -846,6 +860,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
@@ -1213,6 +1235,9 @@ MonoBehaviour:
   initialPower: 1
   powerVal: 0
   powerValDisplay: {fileID: 1998475079}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!65 &119553743
 BoxCollider:
@@ -1427,6 +1452,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: M7
@@ -1578,6 +1611,14 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
       objectReference: {fileID: 0}
@@ -1682,6 +1723,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 4
@@ -1888,6 +1937,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 2
@@ -2330,6 +2387,9 @@ MonoBehaviour:
   initialPower: 1
   powerVal: 0
   powerValDisplay: {fileID: 1742664822}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!65 &169504392
 BoxCollider:
@@ -2434,6 +2494,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 2
@@ -2551,6 +2619,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: C1
@@ -2815,6 +2891,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: jumpTarget.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2992,6 +3076,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 2
@@ -3472,6 +3564,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 4
       objectReference: {fileID: 0}
@@ -3746,6 +3846,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 1
@@ -4128,6 +4236,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: C4
@@ -4197,6 +4313,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
@@ -4537,6 +4661,9 @@ MonoBehaviour:
   initialPower: 1
   powerVal: 0
   powerValDisplay: {fileID: 1767497633}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!1 &279259037
 GameObject:
@@ -4774,6 +4901,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 2
@@ -5230,6 +5365,8 @@ MonoBehaviour:
   - {fileID: 50972483}
   - {fileID: 1302397331}
   - {fileID: 875450640}
+  boardManager: {fileID: 1969736048}
+  turnHandler: {fileID: 1147705019}
 --- !u!4 &337544980 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7819861350974781327, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
@@ -5463,6 +5600,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: A6
@@ -5586,6 +5731,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 2
@@ -5752,6 +5905,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: D-3
@@ -5853,6 +6014,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 1
@@ -5962,6 +6131,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 4
@@ -6202,6 +6379,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 6
@@ -6473,6 +6658,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: L2
@@ -6542,6 +6735,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: jumpTarget.Array.size
       value: 2
@@ -6911,6 +7112,14 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
       objectReference: {fileID: 0}
@@ -7172,6 +7381,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
       objectReference: {fileID: 0}
@@ -7280,6 +7497,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
@@ -7588,6 +7813,14 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 4
       objectReference: {fileID: 0}
@@ -7741,6 +7974,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
@@ -8245,6 +8486,14 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
       objectReference: {fileID: 0}
@@ -8325,6 +8574,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 2
@@ -8487,6 +8744,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: jumpTarget.Array.size
       value: 1
@@ -8661,6 +8926,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
@@ -8917,6 +9190,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
       objectReference: {fileID: 0}
@@ -9014,6 +9295,14 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 3
       objectReference: {fileID: 0}
@@ -9102,6 +9391,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
@@ -9289,6 +9586,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 4
       objectReference: {fileID: 0}
@@ -9397,6 +9702,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 3
@@ -9530,6 +9843,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
@@ -9692,6 +10013,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: B5
@@ -9765,6 +10094,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: jumpTarget.Array.size
       value: 1
@@ -10111,6 +10448,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
       objectReference: {fileID: 0}
@@ -10382,6 +10727,9 @@ MonoBehaviour:
   initialPower: 0
   powerVal: 0
   powerValDisplay: {fileID: 451898693}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!65 &624680706
 BoxCollider:
@@ -10571,6 +10919,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: jumpTarget.Array.size
       value: 1
@@ -10988,6 +11344,14 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 2
       objectReference: {fileID: 0}
@@ -11064,6 +11428,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
@@ -11263,6 +11635,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
       objectReference: {fileID: 0}
@@ -11428,6 +11808,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 2
@@ -11781,6 +12169,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 4
       objectReference: {fileID: 0}
@@ -11857,6 +12253,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: D10
@@ -12134,6 +12538,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: jumpTarget.Array.size
       value: 2
@@ -12458,6 +12870,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: B7
@@ -12544,6 +12964,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
       objectReference: {fileID: 0}
@@ -12621,6 +13049,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 1
       objectReference: {fileID: 0}
@@ -12697,6 +13133,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: D9
@@ -12782,6 +13226,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: M6
@@ -13037,6 +13489,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: A1
@@ -13207,6 +13667,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: jumpTarget.Array.size
       value: 2
@@ -13533,6 +14001,9 @@ MonoBehaviour:
   initialPower: 0
   powerVal: 0
   powerValDisplay: {fileID: 636850973}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!1001 &813875856
 PrefabInstance:
@@ -13550,6 +14021,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 2
@@ -14086,6 +14565,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 1
       objectReference: {fileID: 0}
@@ -14217,6 +14704,9 @@ MonoBehaviour:
   initialPower: 1
   powerVal: 0
   powerValDisplay: {fileID: 471752730}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!65 &868431896
 BoxCollider:
@@ -14376,6 +14866,9 @@ MonoBehaviour:
   initialPower: 1
   powerVal: 0
   powerValDisplay: {fileID: 1366591940}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!65 &875450641
 BoxCollider:
@@ -14599,6 +15092,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
       objectReference: {fileID: 0}
@@ -14748,6 +15249,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: J-2
@@ -15151,6 +15660,14 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 1
       objectReference: {fileID: 0}
@@ -15235,6 +15752,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
@@ -15426,6 +15951,14 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
       objectReference: {fileID: 0}
@@ -15588,6 +16121,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: jumpTarget.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -15664,6 +16205,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: M1
@@ -15729,6 +16278,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: K7
@@ -16176,6 +16733,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
       objectReference: {fileID: 0}
@@ -16331,6 +16896,9 @@ MonoBehaviour:
   initialPower: 1
   powerVal: 0
   powerValDisplay: {fileID: 1180824378}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!65 &987800730
 BoxCollider:
@@ -16504,6 +17072,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: J10
@@ -16644,6 +17220,9 @@ MonoBehaviour:
   initialPower: 1
   powerVal: 0
   powerValDisplay: {fileID: 1475516045}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!65 &1001662372
 BoxCollider:
@@ -16800,6 +17379,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 1
@@ -17115,6 +17702,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
@@ -17468,6 +18063,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: B2
@@ -17671,6 +18274,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
@@ -18101,6 +18712,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 2
       objectReference: {fileID: 0}
@@ -18279,6 +18898,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: J9
@@ -18595,6 +19222,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: L1
@@ -18855,6 +19490,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: B1
@@ -18929,6 +19572,14 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: jumpTarget.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -19001,6 +19652,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: B6
@@ -19147,6 +19806,9 @@ MonoBehaviour:
   initialPower: 1
   powerVal: 0
   powerValDisplay: {fileID: 161243964}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!65 &1174386089
 BoxCollider:
@@ -20126,6 +20788,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 5
       objectReference: {fileID: 0}
@@ -20202,6 +20872,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: M2
@@ -20514,6 +21192,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 1
       objectReference: {fileID: 0}
@@ -20629,6 +21315,9 @@ MonoBehaviour:
   initialPower: 1
   powerVal: 0
   powerValDisplay: {fileID: 358811652}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!65 &1302397332
 BoxCollider:
@@ -20841,6 +21530,9 @@ MonoBehaviour:
   initialPower: 1
   powerVal: 0
   powerValDisplay: {fileID: 1657765347}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!65 &1305523272
 BoxCollider:
@@ -21058,6 +21750,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
@@ -21317,6 +22017,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 4
@@ -21725,6 +22433,9 @@ MonoBehaviour:
   initialPower: 0
   powerVal: 0
   powerValDisplay: {fileID: 1068006616}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!65 &1352328892
 BoxCollider:
@@ -21817,6 +22528,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 1
@@ -22381,6 +23100,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
       objectReference: {fileID: 0}
@@ -22503,6 +23230,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 1
@@ -22699,6 +23434,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: A7
@@ -22873,6 +23616,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 3
@@ -23379,6 +24130,14 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 2
       objectReference: {fileID: 0}
@@ -23625,6 +24384,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: jumpTarget.Array.size
       value: 1
@@ -24008,6 +24775,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: jumpTarget.Array.size
       value: 0
@@ -24455,6 +25230,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 2
       objectReference: {fileID: 0}
@@ -24555,6 +25338,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
@@ -24810,6 +25601,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 4
@@ -25301,6 +26100,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 4
       objectReference: {fileID: 0}
@@ -25416,6 +26223,9 @@ MonoBehaviour:
   initialPower: 1
   powerVal: 0
   powerValDisplay: {fileID: 231031746}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!65 &1577725513
 BoxCollider:
@@ -25740,6 +26550,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
       objectReference: {fileID: 0}
@@ -25922,6 +26740,14 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 3
       objectReference: {fileID: 0}
@@ -26038,6 +26864,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 2
@@ -26294,6 +27128,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: B3
@@ -26514,6 +27356,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 2
       objectReference: {fileID: 0}
@@ -26638,6 +27488,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 3
@@ -27262,6 +28120,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
       objectReference: {fileID: 0}
@@ -27432,6 +28298,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 2
       objectReference: {fileID: 0}
@@ -27516,6 +28390,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: J-3
@@ -27861,6 +28743,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: jumpTarget.Array.size
       value: 1
@@ -28284,6 +29174,14 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: jumpTarget.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -28360,6 +29258,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: A2
@@ -28579,6 +29485,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: L6
@@ -29115,6 +30029,14 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 2
       objectReference: {fileID: 0}
@@ -29307,6 +30229,9 @@ MonoBehaviour:
   initialPower: 1
   powerVal: 0
   powerValDisplay: {fileID: 732763765}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!65 &1840360668
 BoxCollider:
@@ -29411,6 +30336,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: jumpTarget.Array.size
       value: 2
@@ -29569,6 +30502,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: L7
@@ -29748,6 +30689,14 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
       objectReference: {fileID: 0}
@@ -29859,6 +30808,9 @@ MonoBehaviour:
   initialPower: 1
   powerVal: 0
   powerValDisplay: {fileID: 317170930}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!4 &1887438230
 Transform:
@@ -30065,6 +31017,14 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 3
       objectReference: {fileID: 0}
@@ -30205,6 +31165,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: jumpTarget.Array.size
       value: 2
@@ -30430,6 +31398,9 @@ MonoBehaviour:
   initialPower: 1
   powerVal: 0
   powerValDisplay: {fileID: 2035444226}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!65 &1948252807
 BoxCollider:
@@ -30887,6 +31858,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: K1
@@ -31054,6 +32033,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: D-2
@@ -31880,6 +32867,14 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 0
       objectReference: {fileID: 0}
@@ -32114,6 +33109,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: thisTileType
       value: 4
@@ -32599,6 +33602,9 @@ MonoBehaviour:
   initialPower: 1
   powerVal: 0
   powerValDisplay: {fileID: 945551013}
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
   currentTile: {fileID: 0}
 --- !u!65 &2130902389
 BoxCollider:
@@ -32747,6 +33753,14 @@ PrefabInstance:
       propertyPath: location.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1969736048}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: pieceManager
+      value: 
+      objectReference: {fileID: 319160150}
     - target: {fileID: 4553949951410444152, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: m_Name
       value: C7

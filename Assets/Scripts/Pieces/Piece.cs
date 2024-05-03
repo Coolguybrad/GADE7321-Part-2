@@ -13,6 +13,9 @@ public class Piece : MonoBehaviour
 
     [SerializeField] private TMP_Text powerValDisplay;
 
+    [SerializeField] private BoardManager boardManager;
+    [SerializeField] private PieceManager pieceManager;
+    [SerializeField] private TurnHandler turnHandler;
 
     [SerializeField] private Tile currentTile;
 
@@ -47,18 +50,18 @@ public class Piece : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse1))
         {
             Debug.Log(this.gameObject + "Deselected");
-            PieceManager.Instance.setSelectedPiece(null);
+            pieceManager.setSelectedPiece(null);
         }
     }
     private void OnMouseDown()
     {
-        if(TurnHandler.Instance.teamTurn ==  team)
+        if(turnHandler.teamTurn ==  team)
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
-                BoardManager.Instance.wipePossibleMoves();
+                boardManager.wipePossibleMoves();
                 //Debug.Log(this.gameObject + "Selected");
-                PieceManager.Instance.setSelectedPiece(this.gameObject.GetComponent<Piece>());
+                pieceManager.setSelectedPiece(this.gameObject.GetComponent<Piece>());
             }
         }           
     }
@@ -133,10 +136,10 @@ public class Piece : MonoBehaviour
 
         int i = 0;
 
-        foreach (Tile tile in BoardManager.Instance.tileArr)
+        foreach (Tile tile in boardManager.tileArr)
         {
             //Debug.Log("test" + i);
-            if (BoardManager.Instance.tileArr[i].getLocation().x == targetPos.x && BoardManager.Instance.tileArr[i].getLocation().z == targetPos.z)
+            if (boardManager.tileArr[i].getLocation().x == targetPos.x && boardManager.tileArr[i].getLocation().z == targetPos.z)
             {
                 tileToFind = tile;
             }

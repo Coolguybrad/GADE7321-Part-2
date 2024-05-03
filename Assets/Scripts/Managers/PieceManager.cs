@@ -4,36 +4,24 @@ using UnityEngine;
 
 public class PieceManager : MonoBehaviour
 {
-    public static PieceManager Instance;
     [SerializeField] private Piece selectedPiece;
 
     [SerializeField] private Piece[] blueArr;
     [SerializeField] private Piece[] redArr;
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-    }
+    [SerializeField] private BoardManager boardManager;
+    [SerializeField] private TurnHandler turnHandler;
 
     // Update is called once per frame
     void Update()
     {
         if (selectedPiece != null)
         {
-            BoardManager.Instance.showPossibleMoves(selectedPiece);
+            boardManager.showPossibleMoves(selectedPiece);
         }
         else
         {
-            BoardManager.Instance.wipePossibleMoves();
+            boardManager.wipePossibleMoves();
         }
     }
 
@@ -48,139 +36,149 @@ public class PieceManager : MonoBehaviour
 
     public void MoveSelectedPiece() 
     {
-        if (BoardManager.Instance.getClickedTile().getPossibleMove().activeInHierarchy)
+        if (boardManager.getClickedTile().getPossibleMove().activeInHierarchy)
         {
-            if (BoardManager.Instance.getClickedTile().getOccupancy())
-            {
-                int i = 0;
-
-                int nullCount = 1;
-
-                if(TurnHandler.Instance.teamTurn == 0)
-                {
-                    foreach(Piece piece in redArr)
-                    {
-                        if (BoardManager.Instance.getClickedTile().getOccupiedBy() == piece)
-                        {
-                            redArr[i] = null;
-                        }
-                        if(piece == null)
-                        {
-                            nullCount++;
-                        }
-
-                        i++;
-                    }
-
-                    if(nullCount == redArr.Length)
-                    {
-                        BlueWin();
-                    }
-
-                    Debug.Log(nullCount);
-                }
-                else
-                {
-                    foreach (Piece piece in blueArr)
-                    {
-                        if (BoardManager.Instance.getClickedTile().getOccupiedBy() == piece)
-                        {
-                            blueArr[i] = null;
-                        }
-                        if (piece == null)
-                        {
-                            nullCount++;
-                        }
-
-                        i++;
-                    }
-
-                    if (nullCount == blueArr.Length)
-                    {
-                        RedWin();
-                    }
-
-                    Debug.Log(nullCount);
-
-                }
-
-                BoardManager.Instance.getClickedTile().getOccupiedBy().MinorSpellingError();
-            }
-
-            switch (BoardManager.Instance.getClickedTile().GetTileType())
+            switch (boardManager.getClickedTile().GetTileType())
             {
                 case Tile.TileTypeEnum.normal:
+                    NullChecker();
                     selectedPiece.setPowerVal(selectedPiece.getInitialPower());
-                    selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
-                    BoardManager.Instance.wipePossibleMoves();
+                    selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
+                    boardManager.wipePossibleMoves();
                     break;
                 case Tile.TileTypeEnum.bush:
+                    NullChecker();
                     selectedPiece.setPowerVal(100);
-                    selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
-                    BoardManager.Instance.wipePossibleMoves();
+                    selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
+                    boardManager.wipePossibleMoves();
                     break;
                 case Tile.TileTypeEnum.trap:
+                    NullChecker();
                     selectedPiece.setPowerVal(0);
-                    selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
-                    BoardManager.Instance.wipePossibleMoves();
+                    selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
+                    boardManager.wipePossibleMoves();
                     break;
                 case Tile.TileTypeEnum.high:
+                    NullChecker();
                     selectedPiece.setPowerVal(selectedPiece.getInitialPower() + 1);
-                    selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.54f, BoardManager.Instance.getClickedTile().getLocation().z));
-                    BoardManager.Instance.wipePossibleMoves();
+                    selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.54f, boardManager.getClickedTile().getLocation().z));
+                    boardManager.wipePossibleMoves();
                     break;
                 case Tile.TileTypeEnum.rough:
+                    NullChecker();
                     selectedPiece.setPowerVal(selectedPiece.getInitialPower() - 1);
-                    selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
-                    BoardManager.Instance.wipePossibleMoves();
+                    selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
+                    boardManager.wipePossibleMoves();
                     break;
                 case Tile.TileTypeEnum.blueGoal:
-                    selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
+                    selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
                     break;
                 case Tile.TileTypeEnum.redGoal:
-                    selectedPiece.movePiece(new Vector3(BoardManager.Instance.getClickedTile().getLocation().x, 0.315f, BoardManager.Instance.getClickedTile().getLocation().z));
+                    selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
                     break;
             }
 
-            if(TurnHandler.Instance.teamTurn == 0)
+            if(turnHandler.teamTurn == 0)
             {
-                if (BoardManager.Instance.getClickedTile().GetTileType() == Tile.TileTypeEnum.blueGoal)
+                if (boardManager.getClickedTile().GetTileType() == Tile.TileTypeEnum.blueGoal)
                 {
                     BlueWin();
                 }
-                else
+                else if(turnHandler.teamTurn != 2)
                 {
-                    TurnHandler.Instance.SetRedTurn();
+                    turnHandler.SetRedTurn();
                 }
             }
             else
             {
-                if(BoardManager.Instance.getClickedTile().GetTileType() == Tile.TileTypeEnum.redGoal)
+                if(boardManager.getClickedTile().GetTileType() == Tile.TileTypeEnum.redGoal)
                 {
                     RedWin();
                 }
-                else
+                else if (turnHandler.teamTurn != 2)
                 {
-                    TurnHandler.Instance.SetBlueTurn();
+                    turnHandler.SetBlueTurn();
                 }
-            }
+            }           
 
             selectedPiece = null;
-        }      
+        }        
+    }
 
 
+    private void NullChecker()
+    {
+        if (boardManager.getClickedTile().getOccupancy())
+        {
+            boardManager.getClickedTile().getOccupiedBy().MinorSpellingError();
+
+            int i = 0;
+
+            int nullCount = 1;
+
+            if (turnHandler.teamTurn == 0)
+            {
+                foreach (Piece piece in redArr)
+                {
+                    if (boardManager.getClickedTile().getOccupiedBy() == piece)
+                    {
+                        redArr[i] = null;
+                    }
+                    if (piece == null)
+                    {
+                        nullCount++;
+                    }
+
+                    i++;
+                }
+
+                if (nullCount == redArr.Length)
+                {
+                    BlueWin();
+                }
+
+                Debug.Log(redArr.Length);
+
+                Debug.Log(nullCount);
+            }
+            else
+            {
+                foreach (Piece piece in blueArr)
+                {
+                    if (boardManager.getClickedTile().getOccupiedBy() == piece)
+                    {
+                        blueArr[i] = null;
+                    }
+                    if (piece == null)
+                    {
+                        nullCount++;
+                    }
+
+                    i++;
+                }
+
+                if (nullCount == blueArr.Length)
+                {
+                    RedWin();
+                }
+
+                Debug.Log(blueArr.Length);
+
+                Debug.Log(nullCount);
+            }
+        }
     }
 
     public void BlueWin()
     {
-        TurnHandler.Instance.teamTurn = 2;
-        TurnHandler.Instance.turnText.text = "BLUE WINS!";
+        turnHandler.teamTurn = 2;
+        turnHandler.turnText.text = "BLUE WINS!";
     }
 
     public void RedWin()
     {
-        TurnHandler.Instance.teamTurn = 2;
-        TurnHandler.Instance.turnText.text = "RED WINS!";
+        turnHandler.teamTurn = 2;
+        turnHandler.turnText.text = "RED WINS!";
     }
 
 }
