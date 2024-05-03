@@ -27,7 +27,7 @@ public class Piece : MonoBehaviour
 
         if (canBushWalk)
         {
-            powerValDisplay.text = "B\n" + powerVal.ToString() + "/" + initialPower.ToString();
+            powerValDisplay.text = "M\n" + powerVal.ToString() + "/" + initialPower.ToString();
         }
         else if (jumper)
         {
