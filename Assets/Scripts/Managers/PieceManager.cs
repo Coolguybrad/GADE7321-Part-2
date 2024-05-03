@@ -137,9 +137,9 @@ public class PieceManager : MonoBehaviour
                     BlueWin();
                 }
 
-                Debug.Log(redArr.Length);
+                //Debug.Log(redArr.Length);
 
-                Debug.Log(nullCount);
+                //Debug.Log(nullCount);
             }
             else
             {
@@ -162,9 +162,9 @@ public class PieceManager : MonoBehaviour
                     RedWin();
                 }
 
-                Debug.Log(blueArr.Length);
+                //Debug.Log(blueArr.Length);
 
-                Debug.Log(nullCount);
+                //Debug.Log(nullCount);
             }
         }
     }
