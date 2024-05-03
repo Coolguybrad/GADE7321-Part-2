@@ -19,7 +19,7 @@ public class Piece : MonoBehaviour
 
     [SerializeField] private Tile currentTile;
 
-    void Start()
+    void Start()                                                            //set up
     {
         location = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
 
@@ -44,7 +44,6 @@ public class Piece : MonoBehaviour
         currentTile.setOccupiedBy(this);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.Mouse1))
@@ -60,7 +59,6 @@ public class Piece : MonoBehaviour
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 boardManager.wipePossibleMoves();
-                //Debug.Log(this.gameObject + "Selected");
                 pieceManager.setSelectedPiece(this.gameObject.GetComponent<Piece>());
             }
         }           
@@ -71,7 +69,7 @@ public class Piece : MonoBehaviour
         return location;
     }
 
-    public void movePiece(Vector3 pos) 
+    public void movePiece(Vector3 pos)                                          //helper method to move the piece in piecemanager
     {
         currentTile.setOccupancy(false);
         currentTile.setOccupiedBy(null);
@@ -125,12 +123,12 @@ public class Piece : MonoBehaviour
         return team;
     }
 
-    public void MinorSpellingError()
+    public void KillSelf()                                      //method that destroys the piece
     {
         Destroy(this.gameObject);
     }
 
-    public Tile FindCurrentTile(Vector3 targetPos)
+    public Tile FindCurrentTile(Vector3 targetPos)              //method that finds the tile the piece is standing on
     {
         Tile tileToFind = null;
 
@@ -138,7 +136,6 @@ public class Piece : MonoBehaviour
 
         foreach (Tile tile in boardManager.tileArr)
         {
-            //Debug.Log("test" + i);
             if (boardManager.tileArr[i].getLocation().x == targetPos.x && boardManager.tileArr[i].getLocation().z == targetPos.z)
             {
                 tileToFind = tile;

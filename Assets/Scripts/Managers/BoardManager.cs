@@ -10,17 +10,17 @@ public class BoardManager : MonoBehaviour
     public Tile blueGoal;
     public Tile redGoal;
 
-    public void setClickedTile(Tile tile)
+    public void setClickedTile(Tile tile)                                                               //sets the tile clicked by the player
     {
         ClickedTile = tile;
     }
 
-    public Tile getClickedTile()
+    public Tile getClickedTile()                                                                        //returns the tile clicked by the player
     {
         return ClickedTile;
     }
 
-    public void showPossibleMoves(Piece piece)
+    public void showPossibleMoves(Piece piece)                                                          //check up down left right to see if the piece has legal moves
     {
         try
         {
@@ -240,7 +240,7 @@ public class BoardManager : MonoBehaviour
 
     }
 
-    public void wipePossibleMoves()
+    public void wipePossibleMoves()                                                                     //hides possible move objects
     {
         for (int i = 0; i < tileArr.Length; i++)
         {
@@ -248,7 +248,7 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    public Tile getTile(Vector3 position)
+    public Tile getTile(Vector3 position)                                                               //method to get tile at target position
     {
         Tile tile = null;
         for (int i = 0; i < tileArr.Length; i++)
@@ -261,26 +261,13 @@ public class BoardManager : MonoBehaviour
         }
         return tile;
     }
-    public int getTileArrIndex(Vector3 position)
-    {
-        int index = -1;
-        for (int i = 0; i < tileArr.Length; i++)
-        {
-            if (tileArr[i].getLocation().Equals(position))
-            {
-                index = i;
-                break;
-            }
-        }
-        return index;
-    }
 
-    public void Reload()
+    public void Reload()                                                                                //method to reset the scene
     {
         SceneManager.LoadScene(0);
     }
 
-    public void Quit()
+    public void Quit()                                                                                  //quit method
     {
         Application.Quit();
     }

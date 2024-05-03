@@ -24,20 +24,21 @@ public class PieceManager : MonoBehaviour
         }
     }
 
-    public void setSelectedPiece(Piece piece) 
+    public void setSelectedPiece(Piece piece)                                                   //sets the selected piece
     {
         selectedPiece = piece;
     }
-    public Piece getSelectedPiece() 
+    public Piece getSelectedPiece()                                                             //returns the selected piece
     {
         return selectedPiece;
     }
 
-    public void MoveSelectedPiece() 
+    public void MoveSelectedPiece()                                                             //moves the piece
     {
         if (boardManager.getClickedTile().getPossibleMove().activeInHierarchy)
         {
-            switch (boardManager.getClickedTile().GetTileType())
+            //checks tiletype to see what behaviour should be carried out
+            switch (boardManager.getClickedTile().GetTileType())                                
             {
                 case Tile.TileTypeEnum.normal:
                     NullChecker();
@@ -77,39 +78,39 @@ public class PieceManager : MonoBehaviour
                     break;
             }
 
-            if(turnHandler.teamTurn == 0)
+            if (turnHandler.teamTurn == 0)
             {
-                if (boardManager.getClickedTile().GetTileType() == Tile.TileTypeEnum.blueGoal)
+                if (boardManager.getClickedTile().GetTileType() == Tile.TileTypeEnum.blueGoal)      //win con for blue team
                 {
                     BlueWin();
                 }
-                else if(turnHandler.teamTurn != 2)
+                else if(turnHandler.teamTurn != 2)                                                  //return to red team turn
                 {
                     turnHandler.SetRedTurn();
                 }
             }
             else
             {
-                if(boardManager.getClickedTile().GetTileType() == Tile.TileTypeEnum.redGoal)
+                if(boardManager.getClickedTile().GetTileType() == Tile.TileTypeEnum.redGoal)        //win con for red team
                 {
                     RedWin();
                 }
-                else if (turnHandler.teamTurn != 2)
+                else if (turnHandler.teamTurn != 2)                                                 //return to blue team turn
                 {
                     turnHandler.SetBlueTurn();
                 }
             }           
 
-            selectedPiece = null;
+            selectedPiece = null;                                                                   //resets selected piece
         }        
     }
 
 
-    private void NullChecker()
+    private void NullChecker()                                                                      //checks the piece array of each side to see if all pieces have been captured or not for win cons
     {
         if (boardManager.getClickedTile().getOccupancy())
         {
-            boardManager.getClickedTile().getOccupiedBy().MinorSpellingError();
+            boardManager.getClickedTile().getOccupiedBy().KillSelf();
 
             int i = 0;
 

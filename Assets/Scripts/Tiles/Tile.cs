@@ -30,12 +30,6 @@ public class Tile : MonoBehaviour
 
     [SerializeField] private Tile[] jumpTarget;
 
-
-    private void Update()
-    {
-        
-    }
-
     private void Awake()
     {
         location = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
@@ -52,6 +46,7 @@ public class Tile : MonoBehaviour
         pieceManager.MoveSelectedPiece();
 
     }
+
     private void OnMouseExit()
     {
         highlight.SetActive(false);
