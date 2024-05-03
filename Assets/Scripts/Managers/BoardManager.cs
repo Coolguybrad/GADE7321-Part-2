@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BoardManager : MonoBehaviour
 {
@@ -272,5 +273,15 @@ public class BoardManager : MonoBehaviour
             }
         }
         return index;
+    }
+
+    public void Reload()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
