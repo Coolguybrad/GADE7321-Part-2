@@ -269,6 +269,6 @@ public class BoardManager : MonoBehaviour
 
     public void Quit()                                                                                  //quit method
     {
-        Application.Quit();
+        SceneManager.LoadScene(0);
     }
 }
