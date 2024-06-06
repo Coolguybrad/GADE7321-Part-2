@@ -126,7 +126,7 @@ public class PieceManager : MonoBehaviour
         }        
     }
 
-
+    #region general
     private void NullChecker()                                                                      //checks the piece array of each side to see if all pieces have been captured or not for win cons
     {
         if (boardManager.getClickedTile().getOccupancy())
@@ -193,5 +193,17 @@ public class PieceManager : MonoBehaviour
         turnHandler.teamTurn = 2;
         turnHandler.turnText.text = "RED WINS!";
     }
+    #endregion
 
+    #region easyAI
+
+    #endregion
+
+    #region mediumAI
+
+    #endregion
+
+    #region hardAI
+
+    #endregion
 }
