@@ -6,6 +6,8 @@ using UnityEngine;
 public class TurnHandler : MonoBehaviour
 {
     public int teamTurn;
+    [SerializeField] private PieceManager pieceManager;
+    [SerializeField] private BoardManager boardManager;
 
     public TMP_Text turnText;
 
@@ -25,8 +27,15 @@ public class TurnHandler : MonoBehaviour
 
     public void SetRedTurn()
     {
-        teamTurn = 1;
-        turnText.text = "RED TURN";
-        turnText.color = Color.red;
+        if (pieceManager.mode == PieceManager.modeEnum.multiplayer)
+        {
+            teamTurn = 1;
+            turnText.text = "RED TURN";
+            turnText.color = Color.red;
+        }
+        else
+        {
+            teamTurn = 1;
+        }
     }
 }

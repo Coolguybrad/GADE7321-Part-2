@@ -3040,6 +3040,8 @@ MonoBehaviour:
   boardManager: {fileID: 1969736048}
   turnHandler: {fileID: 1147705019}
   mode: 2
+  inGoalAreaRed: []
+  inGoalAreaBlue: []
 --- !u!4 &337544980 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7819861350974781327, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
@@ -3238,6 +3240,7 @@ Transform:
   - {fileID: 319160149}
   - {fileID: 1969736047}
   - {fileID: 1147705018}
+  - {fileID: 1674240567}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &367883785
@@ -8974,7 +8977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &898549060
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11598,6 +11601,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamTurn: 0
+  pieceManager: {fileID: 319160150}
+  boardManager: {fileID: 1969736048}
   turnText: {fileID: 898549061}
 --- !u!4 &1156625533 stripped
 Transform:
@@ -16581,6 +16586,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672177038}
   m_CullTransparentMesh: 1
+--- !u!1 &1674240566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1674240567}
+  - component: {fileID: 1674240568}
+  m_Layer: 0
+  m_Name: minimaxObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1674240567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674240566}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 366683552}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1674240568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674240566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 971c01c6301ce004696690e8449a2f83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boardManager: {fileID: 1969736048}
+  pieceManager: {fileID: 319160150}
+  turnHandler: {fileID: 1147705019}
+  pAI: {fileID: 0}
+  pP: {fileID: 0}
+  tile: {fileID: 0}
 --- !u!4 &1675081843 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7819861350974781327, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
@@ -18931,8 +18986,8 @@ MonoBehaviour:
   - {fileID: 951038133}
   - {fileID: 1988991654}
   ClickedTile: {fileID: 0}
-  blueGoal: {fileID: 0}
-  redGoal: {fileID: 0}
+  blueGoal: {fileID: 1336184090}
+  redGoal: {fileID: 1887935084}
 --- !u!114 &1988991654 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}

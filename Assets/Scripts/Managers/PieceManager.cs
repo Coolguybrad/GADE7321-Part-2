@@ -12,6 +12,8 @@ public class PieceManager : MonoBehaviour
     [SerializeField] private BoardManager boardManager;
     [SerializeField] private TurnHandler turnHandler;
 
+    //private minimax minimax;
+
     public enum modeEnum
     {
         multiplayer,
@@ -127,9 +129,11 @@ public class PieceManager : MonoBehaviour
                     selectedPiece = null;                                                                   //resets selected piece
                 }
                 break;
-            case modeEnum.easy:
+            case modeEnum.easy:                 
+                break;
+            case modeEnum.medium:
 
-                if(turnHandler.teamTurn == 0)
+                if (turnHandler.teamTurn == 0)
                 {
                     switch (boardManager.getClickedTile().GetTileType())
                     {
@@ -170,25 +174,20 @@ public class PieceManager : MonoBehaviour
                             selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
                             break;
                     }
-                        if (boardManager.getClickedTile().GetTileType() == Tile.TileTypeEnum.blueGoal)      //win con for blue team
-                        {
-                            BlueWin();
-                        }
-                        else if (turnHandler.teamTurn != 2)                                                  //return to red team turn
-                        {
-                            turnHandler.SetRedTurn();
-                        }
+                    if (boardManager.getClickedTile().GetTileType() == Tile.TileTypeEnum.blueGoal)      //win con for blue team
+                    {
+                        BlueWin();
+                    }
+                    else if (turnHandler.teamTurn != 2)                                                  //return to red team turn
+                    {
+                        turnHandler.SetRedTurn();
+                    }
+
+                    selectedPiece = null;                                                               //resets selected piece
+
+                    //moveAI(chooseBestPiece().Item1, boardManager.getTile(chooseBestPiece().Item2));
                 }
-                else
-                {
-
-                }
-
-                selectedPiece = null;
-
-                break;
-            case modeEnum.medium:
-
+               
                 break;
             case modeEnum.hard:
 
@@ -263,15 +262,126 @@ public class PieceManager : MonoBehaviour
         turnHandler.teamTurn = 2;
         turnHandler.turnText.text = "RED WINS!";
     }
+
+    [SerializeField] private Piece[] inGoalAreaRed;
+    [SerializeField] private Piece[] inGoalAreaBlue;
+
+    //public bool calcBoardState() //returns true if maximiser
+    //{
+    //    float closestBlueDistance = 100;
+    //    for(int i = 0; i < blueArr.Length;)
+    //    {
+    //        float distance = minimax.calcDistance(blueArr[i], boardManager.redGoal);
+    //        if(distance < closestBlueDistance)
+    //        {
+    //            closestBlueDistance = distance;
+    //        }
+    //    }
+
+    //    float closestRedDistance = 100;
+    //    for (int i = 0; i < blueArr.Length;)
+    //    {
+    //        float distance = minimax.calcDistance(redArr[i], boardManager.blueGoal);
+    //        if (distance < closestRedDistance)
+    //        {
+    //            closestRedDistance = distance;
+    //        }
+    //    }
+
+    //    if(closestRedDistance < closestBlueDistance)
+    //    {
+    //        return true;
+    //    }
+    //    else
+    //    {
+    //        return false;
+    //    }
+
+        
+    //}
+
     #endregion
 
     #region easyAI
+
+
 
     #endregion
 
     #region mediumAI
 
     #endregion
+
+    //public (Piece, Vector3) chooseBestPiece()
+    //{
+    //    float bestPieceVal = Mathf.NegativeInfinity;
+
+    //    Piece bestPiece = null;
+    //    Vector3 bestPos = Vector3.zero;
+
+    //    for (int i = 0; i < redArr.Length; i++)
+    //    {
+    //        float thisValue = minimax.Minimax(boardManager.getPossibleMoves(redArr[i]), 0, calcBoardState(), redArr[i]).Item1;
+
+    //        if(thisValue > bestPieceVal)
+    //        {
+    //            bestPiece = redArr[i];
+    //            bestPos = minimax.Minimax(boardManager.getPossibleMoves(redArr[i]), 0, calcBoardState(), redArr[i]).Item2;
+    //            bestPieceVal = thisValue;
+    //        }
+    //    }
+
+    //    return (bestPiece, bestPos);
+    //}
+
+    //public void moveAI(Piece piece, Tile moveTo)
+    //{
+    //    switch (moveTo.GetTileType())
+    //    {
+    //        case Tile.TileTypeEnum.normal:
+    //            NullChecker();
+    //            piece.setPowerVal(piece.getInitialPower());
+    //            piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+    //            break;
+    //        case Tile.TileTypeEnum.bush:
+    //            NullChecker();
+    //            piece.setPowerVal(100);
+    //            piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+    //            break;
+    //        case Tile.TileTypeEnum.trap:
+    //            NullChecker();
+    //            piece.setPowerVal(0);
+    //            piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+    //            break;
+    //        case Tile.TileTypeEnum.high:
+    //            NullChecker();
+    //            piece.setPowerVal(piece.getInitialPower() + 1);
+    //            piece.movePiece(new Vector3(moveTo.getLocation().x, 0.54f, moveTo.getLocation().z));
+    //            break;
+    //        case Tile.TileTypeEnum.rough:
+    //            NullChecker();
+    //            piece.setPowerVal(piece.getInitialPower() - 1);
+    //            piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+    //            break;
+    //        case Tile.TileTypeEnum.blueGoal:
+    //            piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+    //            break;
+    //        case Tile.TileTypeEnum.redGoal:
+    //            piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+    //            break;
+    //    }
+    //    if (moveTo.GetTileType() == Tile.TileTypeEnum.blueGoal)      //win con for red team
+    //    {
+    //        RedWin();
+    //    }
+    //    else if (turnHandler.teamTurn != 2)                                                  //return to blue team turn
+    //    {
+    //        turnHandler.SetBlueTurn();
+    //    }
+
+    //}
+
+
 
     #region hardAI
 
