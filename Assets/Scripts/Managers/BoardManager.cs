@@ -242,6 +242,7 @@ public class BoardManager : MonoBehaviour
 
     public Tile[] getPossibleMoves(Piece piece)
     {
+
         Tile[] possibleMoves = new Tile[4];
 
         try 

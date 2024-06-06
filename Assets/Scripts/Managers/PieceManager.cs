@@ -34,6 +34,16 @@ public class PieceManager : MonoBehaviour
         }
     }
 
+    public Piece[] getBlueArr() 
+    {
+        return blueArr;
+    }
+
+    public Piece[] getRedArr() 
+    {
+        return redArr;
+    }
+
     public void setSelectedPiece(Piece piece)                                                   //sets the selected piece
     {
         selectedPiece = piece;
