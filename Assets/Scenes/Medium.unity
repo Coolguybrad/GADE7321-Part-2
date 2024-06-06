@@ -3039,6 +3039,7 @@ MonoBehaviour:
   - {fileID: 0}
   boardManager: {fileID: 1969736048}
   turnHandler: {fileID: 1147705019}
+  mode: 2
 --- !u!4 &337544980 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7819861350974781327, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
