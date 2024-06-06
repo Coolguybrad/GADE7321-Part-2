@@ -48,20 +48,34 @@ public class Piece : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Mouse1))
         {
-            Debug.Log(this.gameObject + "Deselected");
             pieceManager.setSelectedPiece(null);
         }
     }
     private void OnMouseDown()
     {
-        if(turnHandler.teamTurn ==  team)
+        if(pieceManager.mode == PieceManager.modeEnum.multiplayer)
         {
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (turnHandler.teamTurn == team)
             {
-                boardManager.wipePossibleMoves();
-                pieceManager.setSelectedPiece(this.gameObject.GetComponent<Piece>());
+                if (Input.GetKey(KeyCode.Mouse0))
+                {
+                    boardManager.wipePossibleMoves();
+                    pieceManager.setSelectedPiece(this.gameObject.GetComponent<Piece>());
+                }
             }
-        }           
+        }
+        else
+        {
+            if (turnHandler.teamTurn == 0)
+            {
+                if (Input.GetKey(KeyCode.Mouse0))
+                {
+                    boardManager.wipePossibleMoves();
+                    pieceManager.setSelectedPiece(this.gameObject.GetComponent<Piece>());
+                }
+            }
+        }
+                  
     }
 
     public Vector3 getLocation()
