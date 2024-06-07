@@ -196,6 +196,11 @@ public class PieceManager : MonoBehaviour
     }
 
     #region general
+    public void SwapFakePiece(Piece piece) 
+    { 
+        
+    }
+
     private void NullChecker()                                                                      //checks the piece array of each side to see if all pieces have been captured or not for win cons
     {
         if (boardManager.getClickedTile().getOccupancy())

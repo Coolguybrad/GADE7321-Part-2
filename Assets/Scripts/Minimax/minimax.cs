@@ -10,6 +10,8 @@ public class MiniMaxClass : MonoBehaviour
     List<Tile> occupiedTiles = new List<Tile>();
     List<Piece> redPieces = new List<Piece>();
     List<Piece> bluePieces = new List<Piece>();
+
+    Stack<Tile> tileStack = new Stack<Tile>();
     int redScore = 0;
     int blueScore = 0;
 
@@ -17,7 +19,7 @@ public class MiniMaxClass : MonoBehaviour
 
     [SerializeField] private Piece pAI;
 
-    public float minimaxAlg(float boardEval, int depth, float alpha, float beta, bool isMax)
+    public float minimaxAlg(float boardEval, int depth, float alpha, float beta, bool isMax, Piece aiPiece)
     {
 
         GetBoardState();
@@ -30,8 +32,10 @@ public class MiniMaxClass : MonoBehaviour
         if (isMax)
         {
             int score = int.MinValue;
-            foreach (Tile t in boardManager.getPossibleMoves()) 
-            { 
+            foreach (Tile t in boardManager.getPossibleMoves(aiPiece)) 
+            {
+                tileStack.Push(t);
+
             }
         }
 
@@ -165,6 +169,11 @@ public class MiniMaxClass : MonoBehaviour
 
             }
         }
+    }
+
+    private void DoFakeMove(Tile currentTile, Tile targetTile) 
+    { 
+        targetTile
     }
 
     public int Evaluate()
