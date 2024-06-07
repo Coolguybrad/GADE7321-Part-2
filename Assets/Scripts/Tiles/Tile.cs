@@ -19,8 +19,6 @@ public class Tile : MonoBehaviour
     [SerializeField] private int internalBlueValue;
     private int trueRedVal;
     private int trueBlueVal;
-    [SerializeField] private int teamNum;
-
     public enum TileTypeEnum
     {
         normal,
@@ -49,7 +47,7 @@ public class Tile : MonoBehaviour
         {
             if (occupiedBy != null)
             {
-                if(teamNum == 0)
+                if(this.getOccupiedBy().getTeam() == 0)
                 {
                     internalRedValue = -100;
                     internalBlueValue = 100;
