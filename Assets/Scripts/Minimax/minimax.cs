@@ -7,135 +7,91 @@ public class MiniMaxClass : MonoBehaviour
     [SerializeField] private PieceManager pieceManager;
     [SerializeField] private TurnHandler turnHandler;
 
-    List<Tile> occupiedTiles = new List<Tile>();
-    List<Piece> redPieces = new List<Piece>();
-    List<Piece> bluePieces = new List<Piece>();
+    private List<Tile> occupiedTiles = new List<Tile>();
+    private List<Piece> redPieces = new List<Piece>();
+    private List<Piece> bluePieces = new List<Piece>();
 
-    Stack<Tile> tileStack = new Stack<Tile>();
-    int redScore = 0;
-    int blueScore = 0;
+    private Stack<MoveData> moveStack = new Stack<MoveData>();
+    private MoveData bestMove;
 
+    private int redScore = 0;
+    private int blueScore = 0;
+    [SerializeField] private int maxDepth = 3;
+    private bool fakeLose = false; 
 
+    public MoveData GetBestMove()
+    {
+        bestMove = CreateMove(boardManager.getTile(new Vector3(0, 0, 0)), boardManager.getTile(new Vector3(0, 0, 0)));
+        MinimaxAlg(maxDepth, float.NegativeInfinity, float.PositiveInfinity, true);
+        return bestMove;
+    }
 
-    [SerializeField] private Piece pAI;
-
-    public float minimaxAlg(float boardEval, int depth, float alpha, float beta, bool isMax, Piece aiPiece)
+    public float MinimaxAlg(int depth, float alpha, float beta, bool isMax)
     {
 
         GetBoardState();
 
-        if (depth == 0)
+        if (depth == 0 || turnHandler.teamTurn == 2)
         {
             return Evaluate();
         }
 
-        if (isMax)
-        {
-            int score = int.MinValue;
-            foreach (Tile t in boardManager.getPossibleMoves(aiPiece)) 
-            {
-                tileStack.Push(t);
-
-            }
-        }
-
-
+        //if (isMax)
+        //{
+        //    int score = int.MinValue;           
+        //}
 
         return 0;
+                
+    }
 
+    private MoveData CreateMove(Tile initial, Tile destination)
+    {
+        MoveData temp = new MoveData
+        {
+            initial = initial,
+            mover = initial.getOccupiedBy(),
+            destination = destination
+        };
 
+        if (destination.getOccupiedBy() != null)
+        {
+            temp.killed = destination.getOccupiedBy();
+        }
 
+        return temp;
+    }
 
+    private void DoFakeMove(Tile initial, Tile destination)
+    {
+        if (destination == boardManager.blueGoal)
+        {
+            fakeLose = true;
+        }
+        else
+        {
+            fakeLose = false;
+        }
+    }
 
+    private void UndoFakeMove()
+    {
+        MoveData temp = moveStack.Pop();
+        Tile destination = temp.destination;
+        Tile initial = temp.initial;
+        Piece killed = temp.killed;
+        Piece mover = temp.mover;
 
+        initial.setOccupiedBy(mover);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //if(depth == 0 || turnHandler.teamTurn == 2)
-        //{
-        //    return Evaluate(pAI, boardManager.redGoal);
-        //}
-
-        //if(isMax)
-        //{
-        //    float maxEval = float.NegativeInfinity;
-
-        //    foreach (Piece piece in pieceManager.getRedArr())
-        //    {
-        //        try
-        //        {
-        //            float eval = minimaxAlg(Evaluate(piece, boardManager.redGoal), depth - 1, alpha, beta, false);
-        //            maxEval = Mathf.Max(maxEval, eval);
-        //            //alpha = Mathf.Max(alpha, eval);
-        //            //if (beta <= alpha)
-        //            //{
-        //            //    break;
-        //            //}
-        //        }
-        //        catch
-        //        {
-
-        //        }
-        //    }
-        //    return maxEval;
-        //}
-        //else
-        //{
-        //    float minEval = float.PositiveInfinity;
-
-        //    foreach (Piece piece in pieceManager.getRedArr())
-        //    {
-        //        try
-        //        {
-        //            float eval = minimaxAlg(Evaluate(piece, boardManager.redGoal), depth - 1, alpha, beta, true);
-        //            minEval = Mathf.Min(minEval, eval);
-        //            //beta = Mathf.Min(beta, eval);
-        //            //if (beta >= alpha)
-        //            //{
-        //            //    break;
-        //            //}
-        //        }
-        //        catch
-        //        {
-
-        //        }
-        //    }
-
-        //    return minEval;
-        //}
+        if(killed != null)
+        {
+            destination.setOccupiedBy(killed);
+        }
+        else
+        {
+            destination.setOccupiedBy(null);
+        }
     }
 
     private void GetBoardState()
@@ -146,35 +102,25 @@ public class MiniMaxClass : MonoBehaviour
         redScore = 0;
 
         occupiedTiles.Clear();
-        for (int i = 0; i < boardManager.getTileArr().Length; i++)
+
+        foreach(Piece red in pieceManager.getRedArr())
         {
-            if (boardManager.getTileArr()[i].getOccupancy() == true)
+            if(red != null)
             {
-                occupiedTiles.Add(boardManager.getTileArr()[i]);
+                redPieces.Add(red);
+                redScore += red.getPowerVal();
             }
         }
 
-        foreach (Tile t in occupiedTiles)
+        foreach (Piece blue in pieceManager.getBlueArr())
         {
-            if (t.getOccupiedBy().getTeam() == 0)
+            if (blue != null)
             {
-                blueScore += t.getOccupiedBy().getPowerVal();
-                bluePieces.Add(t.getOccupiedBy());
-            }
-            else
-            {
-
-                redScore += t.getOccupiedBy().getPowerVal();
-                redPieces.Add(t.getOccupiedBy());
-
+                bluePieces.Add(blue);
+                blueScore += blue.getPowerVal();
             }
         }
-    }
-
-    private void DoFakeMove(Tile currentTile, Tile targetTile) 
-    { 
-
-    }
+    }    
 
     public int Evaluate()
     {
@@ -184,50 +130,43 @@ public class MiniMaxClass : MonoBehaviour
 
         foreach (Piece p in bluePieces)
         {
-            bluePower += p.getPowerVal();
-
+            bluePower += boardManager.getTile(new Vector3(p.getLocation().x, 0, p.getLocation().z)).getInternalBlueValue();
         }
         foreach (Piece p in redPieces) 
         {
-            redPower += p.getPowerVal();
+            redPower += boardManager.getTile(new Vector3(p.getLocation().x, 0, p.getLocation().z)).getInternalRedValue();
         }
 
         pieceDiff = (redScore + (redPower / 100)) - (blueScore + (bluePower / 100));
         return Mathf.RoundToInt(pieceDiff * 100);
-    }
+    } 
 
 
-
-
-
-    //public float Evaluate(Piece pieceAI, Tile tile)
-    //{
-    //    Debug.Log(calcDistance(pieceAI.getLocation(), tile.getLocation()));
-    //    return calcMaterial() - calcDistance(pieceAI.getLocation(), tile.getLocation());
-    //}
-
-    private int calcMaterial()
-    {
-        int score = 0;
-        for (int i = 0; i < pieceManager.getBlueArr().Length; i++)
-        {
-            if (pieceManager.getRedArr()[i] != null)
-            {
-                score += pieceManager.getRedArr()[i].getPowerVal();
-            }
-            if (pieceManager.getBlueArr()[i] != null)
-            {
-                score -= pieceManager.getBlueArr()[i].getPowerVal();
-            }
-        }
-        return score;
-    }
-
-    public float calcDistance(Vector3 startPos, Vector3 targetPos)
-    {
-        return Mathf.Sqrt(Mathf.Pow(targetPos.x - startPos.x, 2) + Mathf.Pow(targetPos.z - startPos.z, 2));
-    }
 }
+
+// nonsense
+
+//private int calcMaterial()
+//{
+//    int score = 0;
+//    for (int i = 0; i < pieceManager.getBlueArr().Length; i++)
+//    {
+//        if (pieceManager.getRedArr()[i] != null)
+//        {
+//            score += pieceManager.getRedArr()[i].getPowerVal();
+//        }
+//        if (pieceManager.getBlueArr()[i] != null)
+//        {
+//            score -= pieceManager.getBlueArr()[i].getPowerVal();
+//        }
+//    }
+//    return score;
+//}
+
+//public float calcDistance(Vector3 startPos, Vector3 targetPos)
+//{
+//    return Mathf.Sqrt(Mathf.Pow(targetPos.x - startPos.x, 2) + Mathf.Pow(targetPos.z - startPos.z, 2));
+//}
 
 //======================================ver1==========================================
 

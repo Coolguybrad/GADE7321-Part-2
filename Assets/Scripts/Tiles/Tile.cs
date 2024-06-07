@@ -15,8 +15,10 @@ public class Tile : MonoBehaviour
     [SerializeField] private BoardManager boardManager;
     [SerializeField] private PieceManager pieceManager;
 
-    [SerializeField] private int internalBiasValue;
-    private int trueVal;
+    [SerializeField] private int internalRedValue;
+    [SerializeField] private int internalBlueValue;
+    private int trueRedVal;
+    private int trueBlueVal;
     [SerializeField] private int teamNum;
 
     public enum TileTypeEnum
@@ -37,7 +39,8 @@ public class Tile : MonoBehaviour
     private void Awake()
     {
         location = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
-        trueVal = internalBiasValue;
+        trueRedVal = internalRedValue;
+        trueBlueVal = internalBlueValue;
     }
 
     private void Update()
@@ -48,16 +51,19 @@ public class Tile : MonoBehaviour
             {
                 if(teamNum == 0)
                 {
-                    internalBiasValue = -100;
+                    internalRedValue = -100;
+                    internalBlueValue = 100;
                 }
                 else
                 {
-                    internalBiasValue = 100;
+                    internalRedValue = 100;
+                    internalBlueValue = -100;
                 }
             }
             else
             {
-                internalBiasValue=trueVal;
+                internalRedValue=trueRedVal;
+                internalBlueValue=trueBlueVal;
             }
         }        
     }
@@ -128,5 +134,14 @@ public class Tile : MonoBehaviour
     public Tile[] getJumpTarget()
     {
         return jumpTarget;
+    }
+
+    public int getInternalBlueValue()
+    {
+        return internalBlueValue;
+    }
+    public int getInternalRedValue()
+    {
+        return internalRedValue;
     }
 }
