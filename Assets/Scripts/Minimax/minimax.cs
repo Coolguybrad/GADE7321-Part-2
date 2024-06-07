@@ -154,6 +154,9 @@ public class MiniMaxClass : MonoBehaviour
         {
             fakeLose = false;
         }
+
+        destination.SwapFakes(initial.getOccupiedBy());
+        initial.setOccupiedBy(null);
     }
 
     private void UndoFakeMove()

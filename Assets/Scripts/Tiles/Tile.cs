@@ -109,6 +109,11 @@ public class Tile : MonoBehaviour
         possibleMove.SetActive(false);
     }
 
+    public void SwapFakes(Piece piece)
+    {
+        this.setOccupiedBy(piece);
+    }
+
     public GameObject getPossibleMove() 
     {
         return possibleMove;
