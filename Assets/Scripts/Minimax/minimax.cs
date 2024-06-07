@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class MiniMaxClass : MonoBehaviour
 {
@@ -36,13 +37,94 @@ public class MiniMaxClass : MonoBehaviour
             return Evaluate();
         }
 
-        //if (isMax)
-        //{
-        //    int score = int.MinValue;           
-        //}
+        if (isMax)
+        {
+            float score = int.MinValue;
+            List<MoveData> allMoves = GetMoves("red");
 
-        return 0;
+            foreach (MoveData move in allMoves)
+            {
+                moveStack.Push(move);
+
+                DoFakeMove(move.initial, move.destination);
+
+                score = MinimaxAlg(depth - 1, alpha, beta, false);
+
+                UndoFakeMove();
+
+                if (score > alpha)
+                {
+                    move.score = score;
+                    if (move.score > bestMove.score && depth >= maxDepth)
+                    {
+                        bestMove = move;
+                    }
+                    alpha = score;
+                }
+                if (score >= beta)
+                {
+                    break;
+                }
+            }
+            return alpha;
+        }
+        else
+        {
+            float score = int.MaxValue;
+            List<MoveData> allMoves = GetMoves("blue");
+            foreach (MoveData move in allMoves)
+            {
+                moveStack.Push(move);
+
+                DoFakeMove(move.initial, move.destination);
+
+                score = MinimaxAlg(depth - 1, alpha, beta, true);
+
+                UndoFakeMove();
+
+                if (score < beta)
+                {
+                    move.score = score;
+                    beta = score;
+                }
+                if (score <= alpha)
+                {
+                    break;
+                }
+            }
+            return beta;
+        }
                 
+    }
+
+    public List<MoveData> GetMoves(string team) 
+    {
+        List<Piece> pieces = new List<Piece>();
+        List<MoveData> turnMove = new List<MoveData>();
+
+        if (team.Equals("red"))
+        {
+            pieces = redPieces;
+        }
+        else
+        {
+            pieces = bluePieces;
+        }
+
+        foreach (Piece piece in pieces) 
+        { 
+       
+        List<Tile> tiles = new List<Tile>();
+            tiles = boardManager.getPossibleMoves(piece).ToList();
+            foreach (Tile tile in tiles)
+            {
+                MoveData move = CreateMove(boardManager.getTile(new Vector3(piece.getLocation().x, 0 , piece.getLocation().z)), tile);
+                turnMove.Add(move);
+
+            }
+        }
+
+        return turnMove;
     }
 
     private MoveData CreateMove(Tile initial, Tile destination)
