@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MiniMaxClass : MonoBehaviour
@@ -6,69 +7,195 @@ public class MiniMaxClass : MonoBehaviour
     [SerializeField] private PieceManager pieceManager;
     [SerializeField] private TurnHandler turnHandler;
 
+    List<Tile> occupiedTiles = new List<Tile>();
+    List<Piece> redPieces = new List<Piece>();
+    List<Piece> bluePieces = new List<Piece>();
+    int redScore = 0;
+    int blueScore = 0;
+
+
+
     [SerializeField] private Piece pAI;
 
     public float minimaxAlg(float boardEval, int depth, float alpha, float beta, bool isMax)
     {
-        if(depth == 0 || turnHandler.teamTurn == 2)
+
+        GetBoardState();
+
+        if (depth == 0)
         {
-            return Evaluate(pAI, boardManager.redGoal);
+            return Evaluate();
         }
 
-        if(isMax)
+        if (isMax)
         {
-            float maxEval = float.NegativeInfinity;
-
-            foreach (Piece piece in pieceManager.getRedArr())
-            {
-                try
-                {
-                    float eval = minimaxAlg(Evaluate(piece, boardManager.redGoal), depth - 1, alpha, beta, false);
-                    maxEval = Mathf.Max(maxEval, eval);
-                    //alpha = Mathf.Max(alpha, eval);
-                    //if (beta <= alpha)
-                    //{
-                    //    break;
-                    //}
-                }
-                catch
-                {
-
-                }
+            int score = int.MinValue;
+            foreach (Tile t in boardManager.getPossibleMoves()) 
+            { 
             }
-            return maxEval;
         }
-        else
-        {
-            float minEval = float.PositiveInfinity;
 
-            foreach (Piece piece in pieceManager.getRedArr())
-            {
-                try
-                {
-                    float eval = minimaxAlg(Evaluate(piece, boardManager.redGoal), depth - 1, alpha, beta, true);
-                    minEval = Mathf.Min(minEval, eval);
-                    //beta = Mathf.Min(beta, eval);
-                    //if (beta >= alpha)
-                    //{
-                    //    break;
-                    //}
-                }
-                catch
-                {
 
-                }
-            }
 
-            return minEval;
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //if(depth == 0 || turnHandler.teamTurn == 2)
+        //{
+        //    return Evaluate(pAI, boardManager.redGoal);
+        //}
+
+        //if(isMax)
+        //{
+        //    float maxEval = float.NegativeInfinity;
+
+        //    foreach (Piece piece in pieceManager.getRedArr())
+        //    {
+        //        try
+        //        {
+        //            float eval = minimaxAlg(Evaluate(piece, boardManager.redGoal), depth - 1, alpha, beta, false);
+        //            maxEval = Mathf.Max(maxEval, eval);
+        //            //alpha = Mathf.Max(alpha, eval);
+        //            //if (beta <= alpha)
+        //            //{
+        //            //    break;
+        //            //}
+        //        }
+        //        catch
+        //        {
+
+        //        }
+        //    }
+        //    return maxEval;
+        //}
+        //else
+        //{
+        //    float minEval = float.PositiveInfinity;
+
+        //    foreach (Piece piece in pieceManager.getRedArr())
+        //    {
+        //        try
+        //        {
+        //            float eval = minimaxAlg(Evaluate(piece, boardManager.redGoal), depth - 1, alpha, beta, true);
+        //            minEval = Mathf.Min(minEval, eval);
+        //            //beta = Mathf.Min(beta, eval);
+        //            //if (beta >= alpha)
+        //            //{
+        //            //    break;
+        //            //}
+        //        }
+        //        catch
+        //        {
+
+        //        }
+        //    }
+
+        //    return minEval;
+        //}
     }
 
-    public float Evaluate(Piece pieceAI, Tile tile)
+    private void GetBoardState()
     {
-        Debug.Log(calcDistance(pieceAI.getLocation(), tile.getLocation()));
-        return calcMaterial() - calcDistance(pieceAI.getLocation(), tile.getLocation());
+        redPieces.Clear();
+        bluePieces.Clear();
+        blueScore = 0;
+        redScore = 0;
+
+        occupiedTiles.Clear();
+        for (int i = 0; i < boardManager.getTileArr().Length; i++)
+        {
+            if (boardManager.getTileArr()[i].getOccupancy() == true)
+            {
+                occupiedTiles.Add(boardManager.getTileArr()[i]);
+            }
+        }
+
+        foreach (Tile t in occupiedTiles)
+        {
+            if (t.getOccupiedBy().getTeam() == 0)
+            {
+                blueScore += t.getOccupiedBy().getPowerVal();
+                bluePieces.Add(t.getOccupiedBy());
+            }
+            else
+            {
+
+                redScore += t.getOccupiedBy().getPowerVal();
+                redPieces.Add(t.getOccupiedBy());
+
+            }
+        }
     }
+
+    public int Evaluate()
+    {
+        float pieceDiff = 0;
+        float bluePower = 0;
+        float redPower = 0;
+
+        foreach (Piece p in bluePieces)
+        {
+            bluePower += p.getPowerVal();
+
+        }
+        foreach (Piece p in redPieces) 
+        {
+            redPower += p.getPowerVal();
+        }
+
+        pieceDiff = (redScore + (redPower / 100)) - (blueScore + (bluePower / 100));
+        return Mathf.RoundToInt(pieceDiff * 100);
+    }
+
+
+
+
+
+    //public float Evaluate(Piece pieceAI, Tile tile)
+    //{
+    //    Debug.Log(calcDistance(pieceAI.getLocation(), tile.getLocation()));
+    //    return calcMaterial() - calcDistance(pieceAI.getLocation(), tile.getLocation());
+    //}
 
     private int calcMaterial()
     {
@@ -88,7 +215,7 @@ public class MiniMaxClass : MonoBehaviour
     }
 
     public float calcDistance(Vector3 startPos, Vector3 targetPos)
-    {        
+    {
         return Mathf.Sqrt(Mathf.Pow(targetPos.x - startPos.x, 2) + Mathf.Pow(targetPos.z - startPos.z, 2));
     }
 }

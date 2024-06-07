@@ -486,6 +486,11 @@ public class BoardManager : MonoBehaviour
         return tile;
     }
 
+    public Tile[] getTileArr() 
+    {
+        return tileArr;
+    }
+
     public void Reload()                                                                                //method to reset the scene
     {
         SceneManager.LoadScene(0);
