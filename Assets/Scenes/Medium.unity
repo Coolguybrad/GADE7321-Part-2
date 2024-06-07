@@ -3023,9 +3023,7 @@ MonoBehaviour:
   - {fileID: 49864197}
   - {fileID: 1840360667}
   - {fileID: 1352328891}
-  - {fileID: 0}
   - {fileID: 1887438229}
-  - {fileID: 0}
   redArr:
   - {fileID: 169504391}
   - {fileID: 868431895}
@@ -3034,11 +3032,10 @@ MonoBehaviour:
   - {fileID: 119553742}
   - {fileID: 987800729}
   - {fileID: 812573014}
-  - {fileID: 0}
   - {fileID: 1302397331}
-  - {fileID: 0}
   boardManager: {fileID: 1969736048}
   turnHandler: {fileID: 1147705019}
+  minimax: {fileID: 1674240568}
   mode: 2
   inGoalAreaRed: []
   inGoalAreaBlue: []
@@ -16634,7 +16631,6 @@ MonoBehaviour:
   pieceManager: {fileID: 319160150}
   turnHandler: {fileID: 1147705019}
   pAI: {fileID: 0}
-  pP: {fileID: 0}
   tile: {fileID: 0}
 --- !u!4 &1675081843 stripped
 Transform:

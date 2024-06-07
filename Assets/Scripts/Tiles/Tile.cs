@@ -42,8 +42,12 @@ public class Tile : MonoBehaviour
 
     private void OnMouseDown()
     {
-        boardManager.setClickedTile(this);
-        pieceManager.MoveSelectedPiece();
+        if(pieceManager.getSelectedPiece() != null)
+        {
+            boardManager.setClickedTile(this);
+            pieceManager.MoveSelectedPiece();
+        }
+        
 
     }
 

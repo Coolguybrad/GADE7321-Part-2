@@ -3039,6 +3039,10 @@ MonoBehaviour:
   - {fileID: 0}
   boardManager: {fileID: 1969736048}
   turnHandler: {fileID: 1147705019}
+  minimax: {fileID: 0}
+  mode: 0
+  inGoalAreaRed: []
+  inGoalAreaBlue: []
 --- !u!4 &337544980 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7819861350974781327, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
@@ -11597,6 +11601,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamTurn: 0
+  pieceManager: {fileID: 319160150}
+  boardManager: {fileID: 1969736048}
   turnText: {fileID: 898549061}
 --- !u!4 &1156625533 stripped
 Transform:

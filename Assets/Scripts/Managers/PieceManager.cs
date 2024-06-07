@@ -12,7 +12,7 @@ public class PieceManager : MonoBehaviour
     [SerializeField] private BoardManager boardManager;
     [SerializeField] private TurnHandler turnHandler;
 
-    //private minimax minimax;
+    [SerializeField] private MiniMaxClass minimax;
 
     public enum modeEnum
     {
@@ -36,12 +36,12 @@ public class PieceManager : MonoBehaviour
         }
     }
 
-    public Piece[] getBlueArr() 
+    public Piece[] getBlueArr()
     {
         return blueArr;
     }
 
-    public Piece[] getRedArr() 
+    public Piece[] getRedArr()
     {
         return redArr;
     }
@@ -57,7 +57,7 @@ public class PieceManager : MonoBehaviour
 
     public void MoveSelectedPiece()                                                             //moves the piece
     {
-        switch(mode)
+        switch (mode)
         {
             case modeEnum.multiplayer:
                 if (boardManager.getClickedTile().getPossibleMove().activeInHierarchy)
@@ -129,7 +129,7 @@ public class PieceManager : MonoBehaviour
                     selectedPiece = null;                                                                   //resets selected piece
                 }
                 break;
-            case modeEnum.easy:                 
+            case modeEnum.easy:
                 break;
             case modeEnum.medium:
 
@@ -183,16 +183,16 @@ public class PieceManager : MonoBehaviour
                         turnHandler.SetRedTurn();
                     }
 
-                    selectedPiece = null;                                                               //resets selected piece
+                    selectedPiece = null;                                                              //resets selected piece
 
-                    //moveAI(chooseBestPiece().Item1, boardManager.getTile(chooseBestPiece().Item2));
                 }
-               
+                moveMediumAI();
+
                 break;
             case modeEnum.hard:
 
                 break;
-        }        
+        }
     }
 
     #region general
@@ -295,9 +295,7 @@ public class PieceManager : MonoBehaviour
     //    else
     //    {
     //        return false;
-    //    }
-
-        
+    //    }        
     //}
 
     #endregion
@@ -312,24 +310,107 @@ public class PieceManager : MonoBehaviour
 
     #endregion
 
-    //public (Piece, Vector3) chooseBestPiece()
-    //{
-    //    float bestPieceVal = Mathf.NegativeInfinity;
+    public void moveMediumAI()
+    {
+        Piece piece = chooseBestPiece();
+        Tile moveTo = chooseBestMove(chooseBestPiece());
 
-    //    Piece bestPiece = null;
-    //    Vector3 bestPos = Vector3.zero;
+        switch (moveTo.GetTileType())
+        {
+            case Tile.TileTypeEnum.normal:
+                NullChecker();
+                piece.setPowerVal(piece.getInitialPower());
+                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+                break;
+            case Tile.TileTypeEnum.bush:
+                NullChecker();
+                piece.setPowerVal(100);
+                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+                break;
+            case Tile.TileTypeEnum.trap:
+                NullChecker();
+                piece.setPowerVal(0);
+                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+                break;
+            case Tile.TileTypeEnum.high:
+                NullChecker();
+                piece.setPowerVal(piece.getInitialPower() + 1);
+                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.54f, moveTo.getLocation().z));
+                break;
+            case Tile.TileTypeEnum.rough:
+                NullChecker();
+                piece.setPowerVal(piece.getInitialPower() - 1);
+                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+                break;
+            case Tile.TileTypeEnum.blueGoal:
+                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+                break;
+            case Tile.TileTypeEnum.redGoal:
+                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+                break;
+        }
+        if (moveTo.GetTileType() == Tile.TileTypeEnum.redGoal)      //win con for red team
+        {
+            RedWin();
+        }
+        else if (turnHandler.teamTurn != 2)                                                  //return to blue team turn
+        {
+            turnHandler.SetBlueTurn();
+        }
+    }
 
-    //    for (int i = 0; i < redArr.Length; i++)
-    //    {
-    //        float thisValue = minimax.Minimax(boardManager.getPossibleMoves(redArr[i]), 0, calcBoardState(), redArr[i]).Item1;
+    public Piece chooseBestPiece()
+    {
+        float bestPieceVal = float.NegativeInfinity;
 
-    //        if(thisValue > bestPieceVal)
-    //        {
-    //            bestPiece = redArr[i];
-    //            bestPos = minimax.Minimax(boardManager.getPossibleMoves(redArr[i]), 0, calcBoardState(), redArr[i]).Item2;
-    //            bestPieceVal = thisValue;
-    //        }
-    //    }
+        Piece bestPiece = null;
+
+        for (int i = 0; i < redArr.Length; i++)
+        {
+            //try
+            {
+                float thisValue = minimax.minimaxAlg(minimax.Evaluate(redArr[i], boardManager.redGoal), 2, float.NegativeInfinity, float.PositiveInfinity, true);
+
+                Debug.Log(thisValue);
+
+                if (thisValue > bestPieceVal)
+                {
+                    bestPiece = redArr[i];
+                    bestPieceVal = thisValue;
+                }
+            }
+            //catch
+            //{
+
+            //}
+        }
+
+        return bestPiece;
+    }
+
+    public Tile chooseBestMove(Piece piece)
+    {
+        Tile chosenMove = null;
+        float distanceToGoal = float.PositiveInfinity;
+
+        for (int i = 0; i < 4; i++)
+        {
+            try
+            {
+                if (minimax.calcDistance(boardManager.getPossibleMoves(piece)[i].getLocation(), boardManager.redGoal.getLocation()) < distanceToGoal)
+                {
+                    chosenMove = boardManager.getPossibleMoves(piece)[i];
+                    distanceToGoal = minimax.calcDistance(boardManager.getPossibleMoves(piece)[i].getLocation(), boardManager.redGoal.getLocation());
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        return chosenMove;
+    }
+
 
     //    return (bestPiece, bestPos);
     //}
