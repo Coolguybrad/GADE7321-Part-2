@@ -3196,23 +3196,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedPiece: {fileID: 0}
   blueArr:
-  - {fileID: 279024357}
+  - {fileID: 1352328891}
   - {fileID: 1577725512}
+  - {fileID: 1840360667}
   - {fileID: 1174386088}
   - {fileID: 1305523271}
-  - {fileID: 49864197}
-  - {fileID: 1840360667}
-  - {fileID: 1352328891}
   - {fileID: 1887438229}
+  - {fileID: 279024357}
+  - {fileID: 49864197}
   redArr:
-  - {fileID: 169504391}
-  - {fileID: 868431895}
+  - {fileID: 812573014}
   - {fileID: 1948252806}
+  - {fileID: 868431895}
   - {fileID: 2130902388}
   - {fileID: 119553742}
-  - {fileID: 987800729}
-  - {fileID: 812573014}
   - {fileID: 1302397331}
+  - {fileID: 169504391}
+  - {fileID: 987800729}
   boardManager: {fileID: 1969736048}
   turnHandler: {fileID: 1147705019}
   minimax: {fileID: 1674240568}
@@ -17774,7 +17774,7 @@ MonoBehaviour:
   boardManager: {fileID: 1969736048}
   pieceManager: {fileID: 319160150}
   turnHandler: {fileID: 1147705019}
-  maxDepth: 3
+  maxDepth: 4
 --- !u!4 &1675081843 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7819861350974781327, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}

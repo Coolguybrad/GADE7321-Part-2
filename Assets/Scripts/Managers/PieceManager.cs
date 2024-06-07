@@ -132,61 +132,65 @@ public class PieceManager : MonoBehaviour
             case modeEnum.easy:
                 break;
             case modeEnum.medium:
-
-                if (turnHandler.teamTurn == 0)
+                if (boardManager.getClickedTile().getPossibleMove().activeInHierarchy)
                 {
-                    switch (boardManager.getClickedTile().GetTileType())
+                    if (turnHandler.teamTurn == 0)
                     {
-                        case Tile.TileTypeEnum.normal:
-                            NullChecker();
-                            selectedPiece.setPowerVal(selectedPiece.getInitialPower());
-                            selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
-                            boardManager.wipePossibleMoves();
-                            break;
-                        case Tile.TileTypeEnum.bush:
-                            NullChecker();
-                            selectedPiece.setPowerVal(100);
-                            selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
-                            boardManager.wipePossibleMoves();
-                            break;
-                        case Tile.TileTypeEnum.trap:
-                            NullChecker();
-                            selectedPiece.setPowerVal(0);
-                            selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
-                            boardManager.wipePossibleMoves();
-                            break;
-                        case Tile.TileTypeEnum.high:
-                            NullChecker();
-                            selectedPiece.setPowerVal(selectedPiece.getInitialPower() + 1);
-                            selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.54f, boardManager.getClickedTile().getLocation().z));
-                            boardManager.wipePossibleMoves();
-                            break;
-                        case Tile.TileTypeEnum.rough:
-                            NullChecker();
-                            selectedPiece.setPowerVal(selectedPiece.getInitialPower() - 1);
-                            selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
-                            boardManager.wipePossibleMoves();
-                            break;
-                        case Tile.TileTypeEnum.blueGoal:
-                            selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
-                            break;
-                        case Tile.TileTypeEnum.redGoal:
-                            selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
-                            break;
-                    }
-                    if (boardManager.getClickedTile().GetTileType() == Tile.TileTypeEnum.blueGoal)      //win con for blue team
-                    {
-                        BlueWin();
-                    }
-                    else if (turnHandler.teamTurn != 2)                                                  //return to red team turn
-                    {
-                        turnHandler.SetRedTurn();
-                    }
+                        switch (boardManager.getClickedTile().GetTileType())
+                        {
+                            case Tile.TileTypeEnum.normal:
+                                NullChecker();
+                                selectedPiece.setPowerVal(selectedPiece.getInitialPower());
+                                selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
+                                boardManager.wipePossibleMoves();
+                                break;
+                            case Tile.TileTypeEnum.bush:
+                                NullChecker();
+                                selectedPiece.setPowerVal(100);
+                                selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
+                                boardManager.wipePossibleMoves();
+                                break;
+                            case Tile.TileTypeEnum.trap:
+                                NullChecker();
+                                selectedPiece.setPowerVal(0);
+                                selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
+                                boardManager.wipePossibleMoves();
+                                break;
+                            case Tile.TileTypeEnum.high:
+                                NullChecker();
+                                selectedPiece.setPowerVal(selectedPiece.getInitialPower() + 1);
+                                selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.54f, boardManager.getClickedTile().getLocation().z));
+                                boardManager.wipePossibleMoves();
+                                break;
+                            case Tile.TileTypeEnum.rough:
+                                NullChecker();
+                                selectedPiece.setPowerVal(selectedPiece.getInitialPower() - 1);
+                                selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
+                                boardManager.wipePossibleMoves();
+                                break;
+                            case Tile.TileTypeEnum.blueGoal:
+                                selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
+                                break;
+                            case Tile.TileTypeEnum.redGoal:
+                                selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
+                                break;
+                        }
+                        if (boardManager.getClickedTile().GetTileType() == Tile.TileTypeEnum.blueGoal)      //win con for blue team
+                        {
+                            BlueWin();
+                        }
+                        else if (turnHandler.teamTurn != 2)                                                  //return to red team turn
+                        {
+                            turnHandler.SetRedTurn();
+                        }
 
-                    selectedPiece = null;                                                              //resets selected piece
+                        selectedPiece = null;                                                              //resets selected piece
 
+                        MoveData move = minimax.GetBestMove();
+                        MoveMediumAI(move);
+
+                    }
                 }
-
 
                 break;
             case modeEnum.hard:
@@ -313,9 +317,53 @@ public class PieceManager : MonoBehaviour
 
     #region mediumAI
 
-    public void moveMediumAI()
+    public void MoveMediumAI(MoveData move)
     {
+        Piece piece = move.mover;
+        Tile moveTo = move.destination;
 
+        switch (moveTo.GetTileType())
+        {
+            case Tile.TileTypeEnum.normal:
+                //NullChecker();
+                piece.setPowerVal(piece.getInitialPower());
+                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+                break;
+            case Tile.TileTypeEnum.bush:
+                //NullChecker();
+                piece.setPowerVal(100);
+                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+                break;
+            case Tile.TileTypeEnum.trap:
+                //NullChecker();
+                piece.setPowerVal(0);
+                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+                break;
+            case Tile.TileTypeEnum.high:
+                //NullChecker();
+                piece.setPowerVal(piece.getInitialPower() + 1);
+                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.54f, moveTo.getLocation().z));
+                break;
+            case Tile.TileTypeEnum.rough:
+                //NullChecker();
+                piece.setPowerVal(piece.getInitialPower() - 1);
+                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+                break;
+            case Tile.TileTypeEnum.blueGoal:
+                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+                break;
+            case Tile.TileTypeEnum.redGoal:
+                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+                break;
+        }
+        if (moveTo.GetTileType() == Tile.TileTypeEnum.redGoal)      //win con for red team
+        {
+            RedWin();
+        }
+        else if (turnHandler.teamTurn != 2)                                                  //return to blue team turn
+        {
+            turnHandler.SetBlueTurn();
+        }
     }
 
     #region graveyard of nonsense

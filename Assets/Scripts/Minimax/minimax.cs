@@ -37,6 +37,7 @@ public class MiniMaxClass : MonoBehaviour
             return Evaluate();
         }
 
+
         if (isMax)
         {
             float score = int.MinValue;
@@ -49,6 +50,8 @@ public class MiniMaxClass : MonoBehaviour
                 DoFakeMove(move.initial, move.destination);
 
                 score = MinimaxAlg(depth - 1, alpha, beta, false);
+
+                Debug.Log(score);
 
                 UndoFakeMove();
 
@@ -66,6 +69,7 @@ public class MiniMaxClass : MonoBehaviour
                     break;
                 }
             }
+            //Debug.Log(score);
             return alpha;
         }
         else
@@ -92,6 +96,7 @@ public class MiniMaxClass : MonoBehaviour
                     break;
                 }
             }
+            //Debug.Log(score);
             return beta;
         }
                 
@@ -105,22 +110,34 @@ public class MiniMaxClass : MonoBehaviour
         if (team.Equals("red"))
         {
             pieces = redPieces;
+            //Debug.Log("red");
         }
         else
         {
             pieces = bluePieces;
+            //Debug.Log("blue");
         }
 
         foreach (Piece piece in pieces) 
-        { 
-       
-        List<Tile> tiles = new List<Tile>();
+        {
+            //Debug.Log("pieceloop");
+            List<Tile> tiles = new List<Tile>();
             tiles = boardManager.getPossibleMoves(piece).ToList();
             foreach (Tile tile in tiles)
             {
-                MoveData move = CreateMove(boardManager.getTile(new Vector3(piece.getLocation().x, 0 , piece.getLocation().z)), tile);
-                turnMove.Add(move);
+                try
+                {
+                    //Debug.Log("tileloop");
+                    MoveData move = CreateMove(boardManager.getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z)), tile);
+                    turnMove.Add(move);
 
+                    //Debug.Log(move.initial);
+                    //Debug.Log(move.destination);
+                }
+                catch
+                {
+
+                }
             }
         }
 
@@ -205,7 +222,7 @@ public class MiniMaxClass : MonoBehaviour
                 blueScore += blue.getPowerVal();
             }
         }
-    }    
+    }
 
     public int Evaluate()
     {
@@ -223,6 +240,9 @@ public class MiniMaxClass : MonoBehaviour
         }
 
         pieceDiff = (redScore + (redPower / 100)) - (blueScore + (bluePower / 100));
+
+        Debug.Log(pieceDiff);
+
         return Mathf.RoundToInt(pieceDiff * 100);
     } 
 
