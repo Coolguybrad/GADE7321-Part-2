@@ -41,7 +41,7 @@ public class MiniMaxClass : MonoBehaviour
 
 
 
-
+        return 0;
 
 
 
@@ -173,7 +173,7 @@ public class MiniMaxClass : MonoBehaviour
 
     private void DoFakeMove(Tile currentTile, Tile targetTile) 
     { 
-        targetTile
+
     }
 
     public int Evaluate()

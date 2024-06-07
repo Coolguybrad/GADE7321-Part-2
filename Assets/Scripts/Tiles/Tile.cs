@@ -15,6 +15,10 @@ public class Tile : MonoBehaviour
     [SerializeField] private BoardManager boardManager;
     [SerializeField] private PieceManager pieceManager;
 
+    [SerializeField] private int internalBiasValue;
+    private int trueVal;
+    [SerializeField] private int teamNum;
+
     public enum TileTypeEnum
     {
         normal,
@@ -33,6 +37,29 @@ public class Tile : MonoBehaviour
     private void Awake()
     {
         location = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+        trueVal = internalBiasValue;
+    }
+
+    private void Update()
+    {
+        if(thisTileType == TileTypeEnum.trap)
+        {
+            if (occupiedBy != null)
+            {
+                if(teamNum == 0)
+                {
+                    internalBiasValue = -100;
+                }
+                else
+                {
+                    internalBiasValue = 100;
+                }
+            }
+            else
+            {
+                internalBiasValue=trueVal;
+            }
+        }        
     }
 
     private void OnMouseOver()
@@ -46,8 +73,7 @@ public class Tile : MonoBehaviour
         {
             boardManager.setClickedTile(this);
             pieceManager.MoveSelectedPiece();
-        }
-        
+        }  
 
     }
 

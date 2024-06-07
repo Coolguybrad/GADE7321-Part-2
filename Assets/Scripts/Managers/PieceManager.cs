@@ -373,17 +373,17 @@ public class PieceManager : MonoBehaviour
         for (int i = 0; i < redArr.Length; i++)
         {
             //try
-            {
-                float thisValue = minimax.minimaxAlg(minimax.Evaluate(redArr[i], boardManager.redGoal), 2, float.NegativeInfinity, float.PositiveInfinity, true);
+            //{
+            //    float thisValue = minimax.minimaxAlg(minimax.Evaluate(redArr[i], boardManager.redGoal), 2, float.NegativeInfinity, float.PositiveInfinity, true);
 
-                Debug.Log(thisValue);
+            //    Debug.Log(thisValue);
 
-                if (thisValue > bestPieceVal)
-                {
-                    bestPiece = redArr[i];
-                    bestPieceVal = thisValue;
-                }
-            }
+            //    if (thisValue > bestPieceVal)
+            //    {
+            //        bestPiece = redArr[i];
+            //        bestPieceVal = thisValue;
+            //    }
+            //}
             //catch
             //{
 
