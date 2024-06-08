@@ -7574,6 +7574,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
+      propertyPath: internalRedValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277362790323655811, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
       propertyPath: internalBlueValue
       value: 50
       objectReference: {fileID: 0}

@@ -282,7 +282,7 @@ public class PieceManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        //Debug.Log(minimax.GetBestMove().score);
+        Debug.Log(minimax.GetBestMove().score + " is the best score");
         MoveData move = minimax.GetBestMove();
         MoveMediumAI(move);
     }
