@@ -108,7 +108,7 @@ public class MiniMaxClass : MonoBehaviour
             }
             //Debug.Log(score);
             return beta;
-        }
+            }
     }
 
 
