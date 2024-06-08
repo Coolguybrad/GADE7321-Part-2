@@ -297,7 +297,7 @@ public class BoardManager : MonoBehaviour
         {
 
             //Debug.Log("Tile at " + (piece.getLocation().x - 1) + "," + piece.getLocation().z + " Does not exist");
-        }//left tile
+        }//up tile
         try
         {
             if (!getTile(new Vector3(piece.getLocation().x + 1, 0, piece.getLocation().z)).getOccupancy())
@@ -351,7 +351,7 @@ public class BoardManager : MonoBehaviour
         {
 
             //Debug.Log("Tile at " + (piece.getLocation().x + 1) + "," + piece.getLocation().z + " Does not exist");
-        }//right tile
+        }//down tile
         try
         {
             if (!getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z - 1)).getOccupancy())
@@ -405,7 +405,7 @@ public class BoardManager : MonoBehaviour
         {
 
             //Debug.Log("Tile at " + piece.getLocation().x + "," + (piece.getLocation().z - 1) + " Does not exist");
-        }//down tile
+        }//left tile
         try
         {
 
@@ -459,7 +459,7 @@ public class BoardManager : MonoBehaviour
         {
 
             //Debug.Log("Tile at " + piece.getLocation().x + "," + (piece.getLocation().z + 1) + " Does not exist");
-        }//up tile
+        }//right tile
 
         return possibleMoves;
     }

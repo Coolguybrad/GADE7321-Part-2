@@ -22,37 +22,39 @@ public class MiniMaxClass : MonoBehaviour
     public MoveData GetBestMove()
     {
         bestMove = CreateMove(boardManager.getTile(new Vector3(0, 0, 0)), boardManager.getTile(new Vector3(0, 0, 0)));
-        MinimaxAlg(maxDepth, float.NegativeInfinity, float.PositiveInfinity, true);
+        MinimaxAlg(maxDepth, int.MinValue, int.MaxValue, true);
         return bestMove;
     }
 
-    public float MinimaxAlg(int depth, float alpha, float beta, bool isMax)
+    public int MinimaxAlg(int depth, int alpha, int beta, bool isMax)
     {
 
         GetBoardState();
 
         if (depth == 0 || turnHandler.teamTurn == 2)
         {
-            return Evaluate();
+            return Mathf.RoundToInt(Evaluate());
         }
 
 
         if (isMax)
         {
-            float score = int.MinValue;
+            int score = int.MinValue;
             List<MoveData> allMoves = GetMoves("red");
+
+            //Debug.Log(allMoves.Count);
 
             foreach (MoveData move in allMoves)
             {
                 moveStack.Push(move);
 
-                Debug.Log(move.destination);
+                //Debug.Log(move.destination);
 
                 DoFakeMove(move.initial, move.destination);
 
                 score = MinimaxAlg(depth - 1, alpha, beta, false);
 
-                Debug.Log(score);
+                //Debug.Log(score);
 
                 UndoFakeMove();
 
@@ -69,13 +71,13 @@ public class MiniMaxClass : MonoBehaviour
                 {
                     break;
                 }
+                Debug.Log(move.score + "," + move.destination);
             }
-            //Debug.Log(score);
             return alpha;
         }
         else
         {
-            float score = int.MaxValue;
+            int score = int.MaxValue;
             List<MoveData> allMoves = GetMoves("blue");
             foreach (MoveData move in allMoves)
             {
@@ -96,11 +98,14 @@ public class MiniMaxClass : MonoBehaviour
                 {
                     break;
                 }
+                Debug.Log(move.score + "," + move.destination);
             }
             //Debug.Log(score);
             return beta;
         }
     }
+
+
 
     public List<MoveData> GetMoves(string team)
     {
@@ -156,8 +161,8 @@ public class MiniMaxClass : MonoBehaviour
 
     private void DoFakeMove(Tile initial, Tile destination)
     {
-        Debug.Log("do");
-
+        //Debug.Log("do");
+        Debug.Log(initial + "," + destination);
 
         if (destination.getOccupiedBy() != null)
         {
@@ -177,7 +182,7 @@ public class MiniMaxClass : MonoBehaviour
 
     private void UndoFakeMove()
     {
-        Debug.Log("undo");
+        //Debug.Log("undo");
 
         MoveData temp = moveStack.Pop();
         Tile destination = temp.destination;
@@ -240,8 +245,8 @@ public class MiniMaxClass : MonoBehaviour
 
         pieceDiff = (redScore + (redPower / 100)) - (blueScore + (bluePower / 100));
 
-        Debug.Log(redPower);
-        Debug.Log(bluePower);
+        //Debug.Log(redPower);
+        //Debug.Log(bluePower);
 
         return pieceDiff*100;
     }
