@@ -112,6 +112,7 @@ public class Tile : MonoBehaviour
     public void SwapFakes(Piece piece)
     {
         this.setOccupiedBy(piece);
+        this.setOccupancy(true);
     }
 
     public GameObject getPossibleMove() 
