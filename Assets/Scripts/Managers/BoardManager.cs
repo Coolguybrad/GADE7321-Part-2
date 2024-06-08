@@ -70,7 +70,7 @@ public class BoardManager : MonoBehaviour
                 }
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
 
             //Debug.Log("Tile at " + (piece.getLocation().x - 1) + "," + piece.getLocation().z + " Does not exist");
@@ -124,7 +124,7 @@ public class BoardManager : MonoBehaviour
             }
 
         }
-        catch (Exception e)
+        catch (Exception)
         {
 
             //Debug.Log("Tile at " + (piece.getLocation().x + 1) + "," + piece.getLocation().z + " Does not exist");
@@ -178,7 +178,7 @@ public class BoardManager : MonoBehaviour
             }
 
         }
-        catch (Exception e)
+        catch (Exception)
         {
 
             //Debug.Log("Tile at " + piece.getLocation().x + "," + (piece.getLocation().z - 1) + " Does not exist");
@@ -232,7 +232,7 @@ public class BoardManager : MonoBehaviour
                 }
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
 
             //Debug.Log("Tile at " + piece.getLocation().x + "," + (piece.getLocation().z + 1) + " Does not exist");
@@ -293,7 +293,7 @@ public class BoardManager : MonoBehaviour
                 }
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
 
             //Debug.Log("Tile at " + (piece.getLocation().x - 1) + "," + piece.getLocation().z + " Does not exist");
@@ -347,7 +347,7 @@ public class BoardManager : MonoBehaviour
             }
 
         }
-        catch (Exception e)
+        catch (Exception)
         {
 
             //Debug.Log("Tile at " + (piece.getLocation().x + 1) + "," + piece.getLocation().z + " Does not exist");
@@ -401,7 +401,7 @@ public class BoardManager : MonoBehaviour
             }
 
         }
-        catch (Exception e)
+        catch (Exception)
         {
 
             //Debug.Log("Tile at " + piece.getLocation().x + "," + (piece.getLocation().z - 1) + " Does not exist");
@@ -455,7 +455,7 @@ public class BoardManager : MonoBehaviour
                 }
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
 
             //Debug.Log("Tile at " + piece.getLocation().x + "," + (piece.getLocation().z + 1) + " Does not exist");

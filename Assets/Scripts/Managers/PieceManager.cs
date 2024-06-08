@@ -186,11 +186,11 @@ public class PieceManager : MonoBehaviour
 
                         selectedPiece = null;                                                              //resets selected piece
 
-                        MoveData move = minimax.GetBestMove();
-                        MoveMediumAI(move);
-
+                        StartCoroutine(MediumMoveCoroutine());
                     }
+
                 }
+
 
                 break;
             case modeEnum.hard:
@@ -275,37 +275,17 @@ public class PieceManager : MonoBehaviour
     [SerializeField] private Piece[] inGoalAreaRed;
     [SerializeField] private Piece[] inGoalAreaBlue;
 
-    //public bool calcBoardState() //returns true if maximiser
-    //{
-    //    float closestBlueDistance = 100;
-    //    for(int i = 0; i < blueArr.Length;)
-    //    {
-    //        float distance = minimax.calcDistance(blueArr[i], boardManager.redGoal);
-    //        if(distance < closestBlueDistance)
-    //        {
-    //            closestBlueDistance = distance;
-    //        }
-    //    }
+    IEnumerator MediumMoveCoroutine()
+    {
+        turnHandler.turnText.text = "RED THINKING...";
+        turnHandler.turnText.color = Color.red;
 
-    //    float closestRedDistance = 100;
-    //    for (int i = 0; i < blueArr.Length;)
-    //    {
-    //        float distance = minimax.calcDistance(redArr[i], boardManager.blueGoal);
-    //        if (distance < closestRedDistance)
-    //        {
-    //            closestRedDistance = distance;
-    //        }
-    //    }
+        yield return new WaitForSeconds(0.5f);
 
-    //    if(closestRedDistance < closestBlueDistance)
-    //    {
-    //        return true;
-    //    }
-    //    else
-    //    {
-    //        return false;
-    //    }        
-    //}
+        //Debug.Log(minimax.GetBestMove().score);
+        MoveData move = minimax.GetBestMove();
+        MoveMediumAI(move);
+    }
 
     #endregion
 

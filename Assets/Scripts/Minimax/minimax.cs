@@ -8,7 +8,6 @@ public class MiniMaxClass : MonoBehaviour
     [SerializeField] private PieceManager pieceManager;
     [SerializeField] private TurnHandler turnHandler;
 
-    private List<Tile> occupiedTiles = new List<Tile>();
     private List<Piece> redPieces = new List<Piece>();
     private List<Piece> bluePieces = new List<Piece>();
 
@@ -18,7 +17,7 @@ public class MiniMaxClass : MonoBehaviour
     private int redScore = 0;
     private int blueScore = 0;
     [SerializeField] private int maxDepth = 3;
-    private bool fakeLose = false; 
+    private bool fakeLose = false;
 
     public MoveData GetBestMove()
     {
@@ -46,6 +45,8 @@ public class MiniMaxClass : MonoBehaviour
             foreach (MoveData move in allMoves)
             {
                 moveStack.Push(move);
+
+                Debug.Log(move.destination);
 
                 DoFakeMove(move.initial, move.destination);
 
@@ -99,10 +100,9 @@ public class MiniMaxClass : MonoBehaviour
             //Debug.Log(score);
             return beta;
         }
-                
     }
 
-    public List<MoveData> GetMoves(string team) 
+    public List<MoveData> GetMoves(string team)
     {
         List<Piece> pieces = new List<Piece>();
         List<MoveData> turnMove = new List<MoveData>();
@@ -110,35 +110,28 @@ public class MiniMaxClass : MonoBehaviour
         if (team.Equals("red"))
         {
             pieces = redPieces;
+            pieces.RemoveAll(item => item == null);
+
             //Debug.Log("red");
         }
         else
         {
             pieces = bluePieces;
+            pieces.RemoveAll(item => item == null);
+
             //Debug.Log("blue");
         }
 
-        foreach (Piece piece in pieces) 
+        foreach (Piece piece in pieces)
         {
-            //Debug.Log("pieceloop");
-            List<Tile> tiles = new List<Tile>();
-            tiles = boardManager.getPossibleMoves(piece).ToList();
-            foreach (Tile tile in tiles)
+            List<Tile> possibleDestinations = boardManager.getPossibleMoves(piece).ToList();
+            possibleDestinations.RemoveAll(item => item == null);
+
+            foreach (Tile tile in possibleDestinations)
             {
-                try
-                {
-                    //Debug.Log("tileloop");
-                    MoveData move = CreateMove(boardManager.getTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z)), tile);
-                    turnMove.Add(move);
-
-                    //Debug.Log(move.initial);
-                    //Debug.Log(move.destination);
-                }
-                catch
-                {
-
-                }
-            }
+                MoveData newMove = CreateMove(piece.FindCurrentTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z)), tile);;
+                turnMove.Add(newMove);
+            }           
         }
 
         return turnMove;
@@ -163,14 +156,20 @@ public class MiniMaxClass : MonoBehaviour
 
     private void DoFakeMove(Tile initial, Tile destination)
     {
-        if (destination == boardManager.blueGoal)
+        Debug.Log("do");
+
+
+        if (destination.getOccupiedBy() != null)
         {
-            fakeLose = true;
-        }
-        else
-        {
-            fakeLose = false;
-        }
+            if (destination == boardManager.blueGoal)
+            {
+                fakeLose = true;
+            }
+            else
+            {
+                fakeLose = false;
+            }
+        }        
 
         destination.SwapFakes(initial.getOccupiedBy());
         initial.setOccupiedBy(null);
@@ -178,6 +177,8 @@ public class MiniMaxClass : MonoBehaviour
 
     private void UndoFakeMove()
     {
+        Debug.Log("undo");
+
         MoveData temp = moveStack.Pop();
         Tile destination = temp.destination;
         Tile initial = temp.initial;
@@ -186,7 +187,7 @@ public class MiniMaxClass : MonoBehaviour
 
         initial.setOccupiedBy(mover);
 
-        if(killed != null)
+        if (killed != null)
         {
             destination.setOccupiedBy(killed);
         }
@@ -203,11 +204,9 @@ public class MiniMaxClass : MonoBehaviour
         blueScore = 0;
         redScore = 0;
 
-        occupiedTiles.Clear();
-
-        foreach(Piece red in pieceManager.getRedArr())
+        foreach (Piece red in pieceManager.getRedArr())
         {
-            if(red != null)
+            if (red != null)
             {
                 redPieces.Add(red);
                 redScore += red.getPowerVal();
@@ -224,7 +223,7 @@ public class MiniMaxClass : MonoBehaviour
         }
     }
 
-    public int Evaluate()
+    public float Evaluate()
     {
         float pieceDiff = 0;
         float bluePower = 0;
@@ -232,19 +231,20 @@ public class MiniMaxClass : MonoBehaviour
 
         foreach (Piece p in bluePieces)
         {
-            bluePower += boardManager.getTile(new Vector3(p.getLocation().x, 0, p.getLocation().z)).getInternalBlueValue();
+            bluePower = bluePower + boardManager.getTile(new Vector3(p.getLocation().x, 0, p.getLocation().z)).getInternalBlueValue();
         }
-        foreach (Piece p in redPieces) 
+        foreach (Piece p in redPieces)
         {
-            redPower += boardManager.getTile(new Vector3(p.getLocation().x, 0, p.getLocation().z)).getInternalRedValue();
+            redPower = redPower + boardManager.getTile(new Vector3(p.getLocation().x, 0, p.getLocation().z)).getInternalRedValue();
         }
 
         pieceDiff = (redScore + (redPower / 100)) - (blueScore + (bluePower / 100));
 
-        Debug.Log(pieceDiff);
+        Debug.Log(redPower);
+        Debug.Log(bluePower);
 
-        return Mathf.RoundToInt(pieceDiff * 100);
-    } 
+        return pieceDiff*100;
+    }
 
 
 }

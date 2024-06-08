@@ -53,29 +53,15 @@ public class Piece : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if(pieceManager.mode == PieceManager.modeEnum.multiplayer)
+        if (turnHandler.teamTurn == team)
         {
-            if (turnHandler.teamTurn == team)
+            if (Input.GetKey(KeyCode.Mouse0))
             {
-                if (Input.GetKey(KeyCode.Mouse0))
-                {
-                    boardManager.wipePossibleMoves();
-                    pieceManager.setSelectedPiece(this.gameObject.GetComponent<Piece>());
-                }
+                boardManager.wipePossibleMoves();
+                pieceManager.setSelectedPiece(this.gameObject.GetComponent<Piece>());
             }
         }
-        else
-        {
-            if (turnHandler.teamTurn == 0)
-            {
-                if (Input.GetKey(KeyCode.Mouse0))
-                {
-                    boardManager.wipePossibleMoves();
-                    pieceManager.setSelectedPiece(this.gameObject.GetComponent<Piece>());
-                }
-            }
-        }
-                  
+                       
     }
 
     public Vector3 getLocation()
