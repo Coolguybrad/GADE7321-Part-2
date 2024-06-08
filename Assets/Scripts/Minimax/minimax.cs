@@ -1,6 +1,8 @@
+//lets try again
+
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 public class MiniMaxClass : MonoBehaviour
 {
@@ -23,12 +25,13 @@ public class MiniMaxClass : MonoBehaviour
     {
         bestMove = CreateMove(boardManager.getTile(new Vector3(0, 0, 0)), boardManager.getTile(new Vector3(0, 0, 0)));
         MinimaxAlg(maxDepth, int.MinValue, int.MaxValue, true);
+
         return bestMove;
     }
 
     public int MinimaxAlg(int depth, int alpha, int beta, bool isMax)
     {
-
+        
         GetBoardState();
 
         if (depth == 0 || turnHandler.teamTurn == 2)
@@ -41,11 +44,15 @@ public class MiniMaxClass : MonoBehaviour
         {
             int score = int.MinValue;
             List<MoveData> allMoves = GetMoves("red");
+            Debug.Log(" there are this many moves maximizer : " + allMoves.Count);
+
+            movesToString();
 
             //Debug.Log(allMoves.Count);
 
             foreach (MoveData move in allMoves)
             {
+
                 moveStack.Push(move);
 
                 //Debug.Log(move.destination);
@@ -79,8 +86,11 @@ public class MiniMaxClass : MonoBehaviour
         {
             int score = int.MaxValue;
             List<MoveData> allMoves = GetMoves("blue");
+
+            movesToString();
             foreach (MoveData move in allMoves)
             {
+                Debug.Log(" there are this many moves minimizer : " + allMoves.Count);
                 moveStack.Push(move);
 
                 DoFakeMove(move.initial, move.destination);
@@ -134,9 +144,9 @@ public class MiniMaxClass : MonoBehaviour
 
             foreach (Tile tile in possibleDestinations)
             {
-                MoveData newMove = CreateMove(piece.FindCurrentTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z)), tile);;
+                MoveData newMove = CreateMove(piece.FindCurrentTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z)), tile); ;
                 turnMove.Add(newMove);
-            }           
+            }
         }
 
         return turnMove;
@@ -174,7 +184,7 @@ public class MiniMaxClass : MonoBehaviour
             {
                 fakeLose = false;
             }
-        }        
+        }
 
         destination.SwapFakes(initial.getOccupiedBy());
         initial.setOccupiedBy(null);
@@ -248,11 +258,52 @@ public class MiniMaxClass : MonoBehaviour
         //Debug.Log(redPower);
         //Debug.Log(bluePower);
 
-        return pieceDiff*100;
+        return pieceDiff * 100;
     }
 
+    public void movesToString()
+    {
 
+
+        foreach (MoveData move in moveStack)
+        {
+            Debug.Log(move.score + "\n\n\n\n");
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // nonsense
 
