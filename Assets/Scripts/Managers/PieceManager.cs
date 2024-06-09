@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PieceManager : MonoBehaviour
@@ -200,9 +199,9 @@ public class PieceManager : MonoBehaviour
     }
 
     #region general
-    public void SwapFakePiece(Piece piece) 
-    { 
-        
+    public void SwapFakePiece(Piece piece)
+    {
+
     }
 
     private void NullChecker()                                                                      //checks the piece array of each side to see if all pieces have been captured or not for win cons
@@ -307,26 +306,72 @@ public class PieceManager : MonoBehaviour
             case Tile.TileTypeEnum.normal:
                 //NullChecker();
                 piece.setPowerVal(piece.getInitialPower());
+                try
+                {
+                    moveTo.getOccupiedBy().KillSelf();
+                }
+                catch (System.Exception)
+                {
+
+                    Debug.Log("nothing to kill");
+                }
+
                 piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
                 break;
             case Tile.TileTypeEnum.bush:
                 //NullChecker();
                 piece.setPowerVal(100);
+                try
+                {
+                    moveTo.getOccupiedBy().KillSelf();
+                }
+                catch (System.Exception)
+                {
+
+                    Debug.Log("nothing to kill");
+                }
                 piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
                 break;
             case Tile.TileTypeEnum.trap:
                 //NullChecker();
                 piece.setPowerVal(0);
+                try
+                {
+                    moveTo.getOccupiedBy().KillSelf();
+                }
+                catch (System.Exception)
+                {
+
+                    Debug.Log("nothing to kill");
+                }
                 piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
                 break;
             case Tile.TileTypeEnum.high:
                 //NullChecker();
                 piece.setPowerVal(piece.getInitialPower() + 1);
+                try
+                {
+                    moveTo.getOccupiedBy().KillSelf();
+                }
+                catch (System.Exception)
+                {
+
+                    Debug.Log("nothing to kill");
+                }
                 piece.movePiece(new Vector3(moveTo.getLocation().x, 0.54f, moveTo.getLocation().z));
                 break;
             case Tile.TileTypeEnum.rough:
                 //NullChecker();
                 piece.setPowerVal(piece.getInitialPower() - 1);
+                try
+                {
+                    moveTo.getOccupiedBy().KillSelf();
+                }
+                catch (System.Exception)
+                {
+
+                    Debug.Log("nothing to kill");
+                }
                 piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
                 break;
             case Tile.TileTypeEnum.blueGoal:
