@@ -301,86 +301,92 @@ public class PieceManager : MonoBehaviour
         Piece piece = move.mover;
         Tile moveTo = move.destination;
 
-        switch (moveTo.GetTileType())
+        if (turnHandler.teamTurn != 2)
         {
-            case Tile.TileTypeEnum.normal:
-                //NullChecker();
-                piece.setPowerVal(piece.getInitialPower());
-                try
-                {
-                    moveTo.getOccupiedBy().KillSelf();
-                }
-                catch (System.Exception)
-                {
+            switch (moveTo.GetTileType())
+            {
+                case Tile.TileTypeEnum.normal:
+                    //NullChecker();
+                    piece.setPowerVal(piece.getInitialPower());
+                    try
+                    {
+                        moveTo.getOccupiedBy().KillSelf();
+                    }
+                    catch (System.Exception)
+                    {
 
-                    Debug.Log("nothing to kill");
-                }
+                        Debug.Log("nothing to kill");
+                    }
 
-                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
-                break;
-            case Tile.TileTypeEnum.bush:
-                //NullChecker();
-                piece.setPowerVal(100);
-                try
-                {
-                    moveTo.getOccupiedBy().KillSelf();
-                }
-                catch (System.Exception)
-                {
+                    piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+                    break;
+                case Tile.TileTypeEnum.bush:
+                    //NullChecker();
+                    piece.setPowerVal(100);
+                    try
+                    {
+                        moveTo.getOccupiedBy().KillSelf();
+                    }
+                    catch (System.Exception)
+                    {
 
-                    Debug.Log("nothing to kill");
-                }
-                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
-                break;
-            case Tile.TileTypeEnum.trap:
-                //NullChecker();
-                piece.setPowerVal(0);
-                try
-                {
-                    moveTo.getOccupiedBy().KillSelf();
-                }
-                catch (System.Exception)
-                {
+                        Debug.Log("nothing to kill");
+                    }
+                    piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+                    break;
+                case Tile.TileTypeEnum.trap:
+                    //NullChecker();
+                    piece.setPowerVal(0);
+                    try
+                    {
+                        moveTo.getOccupiedBy().KillSelf();
+                    }
+                    catch (System.Exception)
+                    {
 
-                    Debug.Log("nothing to kill");
-                }
-                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
-                break;
-            case Tile.TileTypeEnum.high:
-                //NullChecker();
-                piece.setPowerVal(piece.getInitialPower() + 1);
-                try
-                {
-                    moveTo.getOccupiedBy().KillSelf();
-                }
-                catch (System.Exception)
-                {
+                        Debug.Log("nothing to kill");
+                    }
+                    piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+                    break;
+                case Tile.TileTypeEnum.high:
+                    //NullChecker();
+                    piece.setPowerVal(piece.getInitialPower() + 1);
+                    try
+                    {
+                        moveTo.getOccupiedBy().KillSelf();
+                    }
+                    catch (System.Exception)
+                    {
 
-                    Debug.Log("nothing to kill");
-                }
-                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.54f, moveTo.getLocation().z));
-                break;
-            case Tile.TileTypeEnum.rough:
-                //NullChecker();
-                piece.setPowerVal(piece.getInitialPower() - 1);
-                try
-                {
-                    moveTo.getOccupiedBy().KillSelf();
-                }
-                catch (System.Exception)
-                {
+                        Debug.Log("nothing to kill");
+                    }
+                    piece.movePiece(new Vector3(moveTo.getLocation().x, 0.54f, moveTo.getLocation().z));
+                    break;
+                case Tile.TileTypeEnum.rough:
+                    //NullChecker();
+                    piece.setPowerVal(piece.getInitialPower() - 1);
+                    try
+                    {
+                        moveTo.getOccupiedBy().KillSelf();
+                    }
+                    catch (System.Exception)
+                    {
 
-                    Debug.Log("nothing to kill");
-                }
-                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
-                break;
-            case Tile.TileTypeEnum.blueGoal:
-                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
-                break;
-            case Tile.TileTypeEnum.redGoal:
-                piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
-                break;
+                        Debug.Log("nothing to kill");
+                    }
+                    piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+                    break;
+                case Tile.TileTypeEnum.blueGoal:
+                    piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+                    break;
+                case Tile.TileTypeEnum.redGoal:
+                    piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
+                    break;
+            }
         }
+
+
+
         if (moveTo.GetTileType() == Tile.TileTypeEnum.redGoal)      //win con for red team
         {
             RedWin();
