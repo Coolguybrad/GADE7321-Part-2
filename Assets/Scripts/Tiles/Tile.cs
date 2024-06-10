@@ -17,8 +17,6 @@ public class Tile : MonoBehaviour
 
     [SerializeField] private int internalRedValue;
     [SerializeField] private int internalBlueValue;
-    private int trueRedVal;
-    private int trueBlueVal;
     public enum TileTypeEnum
     {
         normal,
@@ -37,33 +35,6 @@ public class Tile : MonoBehaviour
     private void Awake()
     {
         location = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
-        trueRedVal = internalRedValue;
-        trueBlueVal = internalBlueValue;
-    }
-
-    private void Update()
-    {
-        if(thisTileType == TileTypeEnum.trap)
-        {
-            if (occupiedBy != null)
-            {
-                if(this.getOccupiedBy().getTeam() == 0)
-                {
-                    internalRedValue = -100;
-                    internalBlueValue = 100;
-                }
-                else
-                {
-                    internalRedValue = 100;
-                    internalBlueValue = -100;
-                }
-            }
-            else
-            {
-                internalRedValue=trueRedVal;
-                internalBlueValue=trueBlueVal;
-            }
-        }        
     }
 
     private void OnMouseOver()

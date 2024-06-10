@@ -44,7 +44,7 @@ public class MiniMaxClass : MonoBehaviour
     private void DoFakeMove(Tile initial, Tile destination)
     {
         //Debug.Log("do");
-        Debug.Log(initial + "," + destination);
+        //Debug.Log(initial + "," + destination);
 
         destination.SwapFakes(initial.getOccupiedBy());
         initial.setOccupiedBy(null);
@@ -102,7 +102,6 @@ public class MiniMaxClass : MonoBehaviour
             return EasyEvaluate();
         }
 
-
         if (isMax)
         {
             float score = int.MinValue;
@@ -113,12 +112,18 @@ public class MiniMaxClass : MonoBehaviour
             //Debug.Log(allMoves.Count);
 
             foreach (MoveData move in allMoves)
-            {
+            { 
                 moveStack.Push(move);
+
+                if (move.destination.GetTileType() == Tile.TileTypeEnum.redGoal)
+                {
+                    bestMove = move;
+                    break;
+                }
 
                 DoFakeMove(move.initial, move.destination);
 
-                score = MinimaxAlg(depth - 1, alpha, beta, false);
+                score = MinimaxAlg(depth - 1, alpha, beta, false) + (boardManager.getPossibleMoves(move.mover).Length)/100;
 
                 //Debug.Log(score);
 
@@ -329,7 +334,6 @@ public class MiniMaxClass : MonoBehaviour
             return Evaluate();
         }
 
-
         if (isMax)
         {
             float score = int.MinValue;
@@ -342,6 +346,12 @@ public class MiniMaxClass : MonoBehaviour
             foreach (MoveData move in allMoves)
             {
                 moveStack.Push(move);
+
+                if (move.destination.GetTileType() == Tile.TileTypeEnum.redGoal)
+                {
+                    bestMove = move;
+                    break;
+                }
 
                 DoFakeMove(move.initial, move.destination);
 

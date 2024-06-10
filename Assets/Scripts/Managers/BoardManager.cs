@@ -493,7 +493,7 @@ public class BoardManager : MonoBehaviour
 
     public void Reload()                                                                                //method to reset the scene
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Quit()                                                                                  //quit method

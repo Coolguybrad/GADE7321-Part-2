@@ -8,5 +8,5 @@ public class MoveData
     public Tile destination;
     public Piece mover;
     public Piece killed;
-    public float score = float.NegativeInfinity;
+    public float score = float.NegativeInfinity;    
 }
