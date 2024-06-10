@@ -123,7 +123,7 @@ public class MiniMaxClass : MonoBehaviour
 
                 DoFakeMove(move.initial, move.destination);
 
-                score = MinimaxAlg(depth - 1, alpha, beta, false) + (boardManager.getPossibleMoves(move.mover).Length)/100;
+                score = MinimaxAlg(depth - 1, alpha, beta, false);
 
                 //Debug.Log(score);
 
@@ -296,7 +296,7 @@ public class MiniMaxClass : MonoBehaviour
         }
         else
         {
-            Debug.Log("defensive");
+            //Debug.Log("defensive");
 
             foreach (Piece p in bluePieces)
             {
@@ -355,7 +355,7 @@ public class MiniMaxClass : MonoBehaviour
 
                 DoFakeMove(move.initial, move.destination);
 
-                score = MinimaxAlg(depth - 1, alpha, beta, false) + (boardManager.getPossibleMoves(move.mover).Length) / 100;
+                score = MinimaxAlg(depth - 1, alpha, beta, false);
 
                 //Debug.Log(score);
 
@@ -544,7 +544,7 @@ public class MiniMaxClass : MonoBehaviour
         }
         else
         {
-            Debug.Log("defensive");
+            //Debug.Log("defensive");
 
             foreach (Piece p in bluePieces)
             {
