@@ -193,6 +193,7 @@ public class PieceManager : MonoBehaviour
                 }
                 break;
             case modeEnum.medium:
+            case modeEnum.hard:
                 if (boardManager.getClickedTile().getPossibleMove().activeInHierarchy)
                 {
                     if (turnHandler.teamTurn == 0)
@@ -255,9 +256,6 @@ public class PieceManager : MonoBehaviour
                     }
 
                 }
-                break;
-            case modeEnum.hard:
-
                 break;
         }
     }
