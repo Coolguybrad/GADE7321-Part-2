@@ -355,7 +355,7 @@ public class MiniMaxClass : MonoBehaviour
 
                 DoFakeMove(move.initial, move.destination);
 
-                score = MinimaxAlg(depth - 1, alpha, beta, false);
+                score = MinimaxAlg(depth - 1, alpha, beta, false) + (boardManager.getPossibleMoves(move.mover).Length) / 100;
 
                 //Debug.Log(score);
 
