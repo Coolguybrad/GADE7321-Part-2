@@ -274,7 +274,7 @@ public class MiniMaxClass : MonoBehaviour
         float bluePower = 0;
         float redPower = 0;
 
-        if (distanceDiff > 5)
+        if (distanceDiff > 7)
         {
             foreach (Piece p in bluePieces)
             {
@@ -517,7 +517,7 @@ public class MiniMaxClass : MonoBehaviour
         float bluePower = 0;
         float redPower = 0;
 
-        if (distanceDiff > 5)
+        if (distanceDiff > 7)
         {
             foreach (Piece p in bluePieces)
             {
@@ -553,37 +553,6 @@ public class MiniMaxClass : MonoBehaviour
 }
 
 #endregion medium/hard
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // nonsense
