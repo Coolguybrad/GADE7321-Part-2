@@ -1,5 +1,4 @@
-//lets try again
-
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -23,6 +22,296 @@ public class MiniMaxClass : MonoBehaviour
 
     float distanceDiff = 0;
 
+    #region general
+
+    private MoveData CreateMove(Tile initial, Tile destination)
+    {
+        MoveData temp = new MoveData
+        {
+            initial = initial,
+            mover = initial.getOccupiedBy(),
+            destination = destination
+        };
+
+        if (destination.getOccupiedBy() != null)
+        {
+            temp.killed = destination.getOccupiedBy();
+        }
+
+        return temp;
+    }
+
+    private void DoFakeMove(Tile initial, Tile destination)
+    {
+        //Debug.Log("do");
+        Debug.Log(initial + "," + destination);
+
+        destination.SwapFakes(initial.getOccupiedBy());
+        initial.setOccupiedBy(null);
+        initial.setOccupancy(false);
+    }
+
+    private void UndoFakeMove()
+    {
+        //Debug.Log("undo");
+
+        MoveData temp = moveStack.Pop();
+        Tile destination = temp.destination;
+        Tile initial = temp.initial;
+        Piece killed = temp.killed;
+        Piece mover = temp.mover;
+
+        initial.setOccupiedBy(mover);
+        initial.setOccupancy(true);
+
+        if (killed != null)
+        {
+            destination.setOccupiedBy(killed);
+            destination.setOccupancy(true);
+        }
+        else
+        {
+            destination.setOccupiedBy(null);
+            destination.setOccupancy(false);
+        }
+    }
+
+    public float calcDistance(Vector3 startPos, Vector3 targetPos)
+    {
+        return Mathf.Sqrt(Mathf.Pow(targetPos.x - startPos.x, 2) + Mathf.Pow(targetPos.z - startPos.z, 2));
+    }
+
+    #endregion
+
+    #region easy
+
+    public MoveData GetBestEasyMove()
+    {
+        bestMove = CreateMove(boardManager.getTile(new Vector3(0, 0, 0)), boardManager.getTile(new Vector3(0, 0, 0)));
+        EasyMiniMax(maxDepth, float.NegativeInfinity, float.PositiveInfinity, true);
+
+        return bestMove;
+    }
+
+    public float EasyMiniMax(int depth, float alpha, float beta, bool isMax)
+    {
+        GetEasyState();
+
+        if (depth == 0 || turnHandler.teamTurn == 2)
+        {
+            return EasyEvaluate();
+        }
+
+
+        if (isMax)
+        {
+            float score = int.MinValue;
+            List<MoveData> allMoves = GetEasyMoves("red");
+
+            //Debug.Log(" there are this many moves maximizer : " + allMoves.Count);
+
+            //Debug.Log(allMoves.Count);
+
+            foreach (MoveData move in allMoves)
+            {
+                moveStack.Push(move);
+
+                DoFakeMove(move.initial, move.destination);
+
+                score = MinimaxAlg(depth - 1, alpha, beta, false);
+
+                //Debug.Log(score);
+
+                UndoFakeMove();
+
+                if (score > alpha)
+                {
+                    move.score = score;
+                    if (move.score > bestMove.score && depth >= maxDepth)
+                    {
+                        bestMove = move;
+                    }
+                    alpha = score;
+                }
+                if (score >= beta)
+                {
+                    break;
+                }
+                //Debug.Log(move.score + "," + move.destination);
+            }
+            return alpha;
+        }
+        else
+        {
+            float score = int.MaxValue;
+            List<MoveData> allMoves = GetEasyMoves("blue");
+
+            foreach (MoveData move in allMoves)
+            {
+                //Debug.Log(" there are this many moves minimizer : " + allMoves.Count);
+                moveStack.Push(move);
+
+                DoFakeMove(move.initial, move.destination);
+
+                score = MinimaxAlg(depth - 1, alpha, beta, true);
+
+                UndoFakeMove();
+
+                if (score < beta)
+                {
+                    move.score = score;
+                    beta = score;
+                }
+                if (score <= alpha)
+                {
+                    break;
+                }
+                //Debug.Log(move.score + "," + move.destination);
+            }
+            //Debug.Log(score);
+            return beta;
+        }
+    }
+
+    public List<MoveData> GetEasyMoves(string team)
+    {
+        List<Piece> pieces = new List<Piece>();
+        List<MoveData> turnMove = new List<MoveData>();
+
+        if (team.Equals("red"))
+        {
+            pieces = redPieces;
+            pieces.RemoveAll(item => item == null);
+        }
+        else
+        {
+            pieces = bluePieces;
+            pieces.RemoveAll(item => item == null);
+        }
+
+        System.Random random = new System.Random(DateTime.Now.Millisecond);
+        Piece randomPiece = pieces[random.Next(0, pieces.Count)];
+
+        List<Tile> possibleDestinations = boardManager.getPossibleMoves(randomPiece).ToList();
+        possibleDestinations.RemoveAll(item => item == null);
+
+        foreach (Tile tile in possibleDestinations)
+        {
+            if (randomPiece.getTeam() == 0)
+            {
+                blueScore++;
+            }
+            else
+            {
+                redScore++;
+            }
+            MoveData newMove = CreateMove(randomPiece.FindCurrentTile(new Vector3(randomPiece.getLocation().x, 0, randomPiece.getLocation().z)), tile); ;
+            turnMove.Add(newMove);
+        }
+
+        return turnMove;
+    }
+
+    private void GetEasyState()
+    {
+        redPieces.Clear();
+        bluePieces.Clear();
+        blueScore = 0;
+        redScore = 0;
+
+        tilesWithPieces.Clear();
+
+        Piece closestBlue;
+        float blueDistance = float.PositiveInfinity;
+
+        List<Tile> allTiles = boardManager.getTileArr().ToList();
+
+        foreach (Tile tile in allTiles)
+        {
+            if (tile.getOccupiedBy() != null)
+            {
+                tile.setOccupancy(true);
+            }
+            else
+            {
+                tile.setOccupancy(false);
+            }
+            if (tile.getOccupancy())
+            {
+                tilesWithPieces.Add(tile);
+            }
+        }
+
+        tilesWithPieces.RemoveAll(item => item == null);
+
+        foreach (Tile tile in tilesWithPieces)
+        {
+            if (tile.getOccupiedBy().getTeam() == 0)
+            {
+                blueScore += tile.getInternalBlueValue();
+
+                bluePieces.Add(tile.getOccupiedBy());
+
+                if (calcDistance(tile.getOccupiedBy().getLocation(), boardManager.blueGoal.getLocation()) < blueDistance)
+                {
+                    closestBlue = tile.getOccupiedBy();
+                    blueDistance = calcDistance(tile.getOccupiedBy().getLocation(), boardManager.blueGoal.getLocation());
+                }
+            }
+            else
+            {
+                redScore += tile.getInternalRedValue();
+
+                redPieces.Add(tile.getOccupiedBy());
+
+            }
+        }
+        distanceDiff = blueDistance;
+    }
+
+    public float EasyEvaluate()
+    {
+        float bluePower = 0;
+        float redPower = 0;
+
+        if (distanceDiff > 5)
+        {
+            foreach (Piece p in bluePieces)
+            {
+                bluePower += boardManager.getTile(new Vector3(p.getLocation().x, 0, p.getLocation().z)).getInternalBlueValue();
+            }
+            foreach (Piece p in redPieces)
+            {
+                redPower += boardManager.getTile(new Vector3(p.getLocation().x, 0, p.getLocation().z)).getInternalRedValue();
+            }
+
+            float pieceDiff = (redScore + (redPower / 100)) - (blueScore + (bluePower / 100));
+
+            return pieceDiff * 100;
+        }
+        else
+        {
+            Debug.Log("defensive");
+
+            foreach (Piece p in bluePieces)
+            {
+                bluePower += boardManager.getTile(new Vector3(p.getLocation().x, 0, p.getLocation().z)).getInternalBlueValue();
+            }
+            foreach (Piece p in redPieces)
+            {
+                redPower += boardManager.getTile(new Vector3(p.getLocation().x, 0, p.getLocation().z)).getInternalBlueValue();
+            }
+
+            float pieceDiff = (redScore + (redPower / 100)) - (blueScore + (bluePower / 100));
+
+            return pieceDiff * 100;
+        }
+    }
+
+    #endregion easy
+
+    #region medium/hard
+
     public MoveData GetBestMove()
     {
         bestMove = CreateMove(boardManager.getTile(new Vector3(0, 0, 0)), boardManager.getTile(new Vector3(0, 0, 0)));
@@ -32,12 +321,12 @@ public class MiniMaxClass : MonoBehaviour
     }
 
     public float MinimaxAlg(int depth, float alpha, float beta, bool isMax)
-    {        
+    {
         GetBoardState();
 
         if (depth == 0 || turnHandler.teamTurn == 2)
         {
-            return Mathf.RoundToInt(Evaluate());
+            return Evaluate();
         }
 
 
@@ -45,15 +334,13 @@ public class MiniMaxClass : MonoBehaviour
         {
             float score = int.MinValue;
             List<MoveData> allMoves = GetMoves("red");
-            //Debug.Log(" there are this many moves maximizer : " + allMoves.Count);
 
-            //movesToString();
+            //Debug.Log(" there are this many moves maximizer : " + allMoves.Count);
 
             //Debug.Log(allMoves.Count);
 
             foreach (MoveData move in allMoves)
             {
-
                 moveStack.Push(move);
 
                 DoFakeMove(move.initial, move.destination);
@@ -110,10 +397,8 @@ public class MiniMaxClass : MonoBehaviour
             }
             //Debug.Log(score);
             return beta;
-            }
+        }
     }
-
-
 
     public List<MoveData> GetMoves(string team)
     {
@@ -142,64 +427,20 @@ public class MiniMaxClass : MonoBehaviour
 
             foreach (Tile tile in possibleDestinations)
             {
+                if (piece.getTeam() == 0)
+                {
+                    blueScore++;
+                }
+                else
+                {
+                    redScore++;
+                }
                 MoveData newMove = CreateMove(piece.FindCurrentTile(new Vector3(piece.getLocation().x, 0, piece.getLocation().z)), tile); ;
                 turnMove.Add(newMove);
             }
         }
 
         return turnMove;
-    }
-
-    private MoveData CreateMove(Tile initial, Tile destination)
-    {
-        MoveData temp = new MoveData
-        {
-            initial = initial,
-            mover = initial.getOccupiedBy(),
-            destination = destination
-        };
-
-        if (destination.getOccupiedBy() != null)
-        {
-            temp.killed = destination.getOccupiedBy();
-        }
-
-        return temp;
-    }
-
-    private void DoFakeMove(Tile initial, Tile destination)
-    {
-        //Debug.Log("do");
-        Debug.Log(initial + "," + destination);       
-
-        destination.SwapFakes(initial.getOccupiedBy());
-        initial.setOccupiedBy(null);
-        initial.setOccupancy(false);
-    }
-
-    private void UndoFakeMove()
-    {
-        //Debug.Log("undo");
-
-        MoveData temp = moveStack.Pop();
-        Tile destination = temp.destination;
-        Tile initial = temp.initial;
-        Piece killed = temp.killed;
-        Piece mover = temp.mover;
-
-        initial.setOccupiedBy(mover);
-        initial.setOccupancy(true);
-
-        if (killed != null)
-        {
-            destination.setOccupiedBy(killed);
-            destination.setOccupancy(true);
-        }
-        else
-        {
-            destination.setOccupiedBy(null);
-            destination.setOccupancy(false);
-        }
     }
 
     private void GetBoardState()
@@ -211,16 +452,17 @@ public class MiniMaxClass : MonoBehaviour
 
         tilesWithPieces.Clear();
 
-        Piece closestRed;
+        //Piece closestRed;
+        //float redDistance = float.PositiveInfinity;
+
         Piece closestBlue;
         float blueDistance = float.PositiveInfinity;
-        //float redDistance = float.PositiveInfinity;
 
         List<Tile> allTiles = boardManager.getTileArr().ToList();
 
-        foreach(Tile tile in allTiles)
+        foreach (Tile tile in allTiles)
         {
-            if(tile.getOccupiedBy() != null)
+            if (tile.getOccupiedBy() != null)
             {
                 tile.setOccupancy(true);
             }
@@ -228,7 +470,7 @@ public class MiniMaxClass : MonoBehaviour
             {
                 tile.setOccupancy(false);
             }
-            if(tile.getOccupancy())
+            if (tile.getOccupancy())
             {
                 tilesWithPieces.Add(tile);
             }
@@ -236,11 +478,13 @@ public class MiniMaxClass : MonoBehaviour
 
         tilesWithPieces.RemoveAll(item => item == null);
 
-        foreach(Tile tile in tilesWithPieces)
-        {            
-            if(tile.getOccupiedBy().getTeam() == 0)
+        foreach (Tile tile in tilesWithPieces)
+        {
+            if (tile.getOccupiedBy().getTeam() == 0)
             {
                 blueScore += tile.getInternalBlueValue();
+
+                //blueScore += tile.getOccupiedBy().getPowerVal();
                 bluePieces.Add(tile.getOccupiedBy());
 
                 if (calcDistance(tile.getOccupiedBy().getLocation(), boardManager.blueGoal.getLocation()) < blueDistance)
@@ -252,6 +496,8 @@ public class MiniMaxClass : MonoBehaviour
             else
             {
                 redScore += tile.getInternalRedValue();
+
+                //redScore += tile.getOccupiedBy().getPowerVal();
                 redPieces.Add(tile.getOccupiedBy());
 
                 //if (calcDistance(tile.getOccupiedBy().getLocation(), boardManager.blueGoal.getLocation()) < blueDistance)
@@ -260,7 +506,7 @@ public class MiniMaxClass : MonoBehaviour
                 //    redDistance = calcDistance(tile.getOccupiedBy().getLocation(), boardManager.blueGoal.getLocation());
                 //}
             }
-        }        
+        }
 
         distanceDiff = blueDistance;
 
@@ -271,7 +517,7 @@ public class MiniMaxClass : MonoBehaviour
         float bluePower = 0;
         float redPower = 0;
 
-        if(distanceDiff > 5)
+        if (distanceDiff > 5)
         {
             foreach (Piece p in bluePieces)
             {
@@ -302,15 +548,11 @@ public class MiniMaxClass : MonoBehaviour
             float pieceDiff = (redScore + (redPower / 100)) - (blueScore + (bluePower / 100));
 
             return pieceDiff * 100;
-        }       
-    }
-
-    public float calcDistance(Vector3 startPos, Vector3 targetPos)
-    {
-        return Mathf.Sqrt(Mathf.Pow(targetPos.x - startPos.x, 2) + Mathf.Pow(targetPos.z - startPos.z, 2));
-    }
+        }
+    }    
 }
 
+#endregion medium/hard
 
 
 

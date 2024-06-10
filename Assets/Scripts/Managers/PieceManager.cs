@@ -129,6 +129,68 @@ public class PieceManager : MonoBehaviour
                 }
                 break;
             case modeEnum.easy:
+                if (boardManager.getClickedTile().getPossibleMove().activeInHierarchy)
+                {
+                    if (turnHandler.teamTurn == 0)
+                    {
+                        switch (boardManager.getClickedTile().GetTileType())
+                        {
+                            case Tile.TileTypeEnum.normal:
+                                NullChecker();
+                                selectedPiece.setPowerVal(selectedPiece.getInitialPower());
+                                selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
+                                boardManager.wipePossibleMoves();
+                                break;
+                            case Tile.TileTypeEnum.bush:
+                                NullChecker();
+                                selectedPiece.setPowerVal(100);
+                                selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
+                                boardManager.wipePossibleMoves();
+                                break;
+                            case Tile.TileTypeEnum.trap:
+                                NullChecker();
+                                selectedPiece.setPowerVal(0);
+                                selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
+                                boardManager.wipePossibleMoves();
+                                break;
+                            case Tile.TileTypeEnum.high:
+                                NullChecker();
+                                selectedPiece.setPowerVal(selectedPiece.getInitialPower() + 1);
+                                selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.54f, boardManager.getClickedTile().getLocation().z));
+                                boardManager.wipePossibleMoves();
+                                break;
+                            case Tile.TileTypeEnum.rough:
+                                NullChecker();
+                                selectedPiece.setPowerVal(selectedPiece.getInitialPower() - 1);
+                                selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
+                                boardManager.wipePossibleMoves();
+                                break;
+                            case Tile.TileTypeEnum.blueGoal:
+                                selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
+                                break;
+                            case Tile.TileTypeEnum.redGoal:
+                                selectedPiece.movePiece(new Vector3(boardManager.getClickedTile().getLocation().x, 0.315f, boardManager.getClickedTile().getLocation().z));
+                                break;
+                        }
+                        if (boardManager.getClickedTile().GetTileType() == Tile.TileTypeEnum.blueGoal)      //win con for blue team
+                        {
+                            BlueWin();
+                        }
+                        else if (turnHandler.teamTurn != 2)                                                  //return to red team turn
+                        {
+                            turnHandler.SetRedTurn();
+                        }
+
+                        selectedPiece = null;                                                              //resets selected piece
+
+                        if (turnHandler.teamTurn != 2)
+                        {
+                            StartCoroutine(AIMoveEasyCoroutine());
+                        }
+
+                    }
+
+                }
                 break;
             case modeEnum.medium:
                 if (boardManager.getClickedTile().getPossibleMove().activeInHierarchy)
@@ -187,27 +249,43 @@ public class PieceManager : MonoBehaviour
 
                         if (turnHandler.teamTurn != 2)
                         {
-                            StartCoroutine(MediumMoveCoroutine());
+                            StartCoroutine(AIMoveCoroutine());
                         }
 
                     }
 
                 }
-
-
                 break;
             case modeEnum.hard:
 
                 break;
         }
     }
-
-    #region general
-    public void SwapFakePiece(Piece piece)
+    IEnumerator AIMoveEasyCoroutine()
     {
+        turnHandler.turnText.text = "RED THINKING...";
+        turnHandler.turnText.color = Color.red;
 
+        yield return new WaitForSeconds(0.5f);
+
+        //Debug.Log(minimax.GetBestEasyMove().score + " is the best score");
+        MoveData move = minimax.GetBestEasyMove();
+        MoveAI(move);
     }
 
+    IEnumerator AIMoveCoroutine()
+    {
+        turnHandler.turnText.text = "RED THINKING...";
+        turnHandler.turnText.color = Color.red;
+
+        yield return new WaitForSeconds(0.5f);
+
+        //Debug.Log(minimax.GetBestMove().score + " is the best score");
+        MoveData move = minimax.GetBestMove();
+        MoveAI(move);
+    }
+
+    #region general
     private void NullChecker()                                                                      //checks the piece array of each side to see if all pieces have been captured or not for win cons
     {
         if (boardManager.getClickedTile().getOccupancy())
@@ -275,32 +353,7 @@ public class PieceManager : MonoBehaviour
         turnHandler.turnText.text = "RED WINS!";
     }
 
-    [SerializeField] private Piece[] inGoalAreaRed;
-    [SerializeField] private Piece[] inGoalAreaBlue;
-
-    IEnumerator MediumMoveCoroutine()
-    {
-        turnHandler.turnText.text = "RED THINKING...";
-        turnHandler.turnText.color = Color.red;
-
-        yield return new WaitForSeconds(0.5f);
-
-        Debug.Log(minimax.GetBestMove().score + " is the best score");
-        MoveData move = minimax.GetBestMove();
-        MoveMediumAI(move);
-    }
-
-    #endregion
-
-    #region easyAI
-
-
-
-    #endregion
-
-    #region mediumAI
-
-    public void MoveMediumAI(MoveData move)
+    public void MoveAI(MoveData move)
     {
         Piece piece = move.mover;
         Tile moveTo = move.destination;
@@ -318,9 +371,8 @@ public class PieceManager : MonoBehaviour
                 catch (System.Exception)
                 {
 
-                    Debug.Log("nothing to kill");
+                    //Debug.Log("nothing to kill");
                 }
-
                 piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
                 break;
             case Tile.TileTypeEnum.bush:
@@ -332,8 +384,7 @@ public class PieceManager : MonoBehaviour
                 }
                 catch (System.Exception)
                 {
-
-                    Debug.Log("nothing to kill");
+                    //Debug.Log("nothing to kill");
                 }
                 piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
                 break;
@@ -346,8 +397,7 @@ public class PieceManager : MonoBehaviour
                 }
                 catch (System.Exception)
                 {
-
-                    Debug.Log("nothing to kill");
+                    //Debug.Log("nothing to kill");
                 }
                 piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
                 break;
@@ -360,8 +410,7 @@ public class PieceManager : MonoBehaviour
                 }
                 catch (System.Exception)
                 {
-
-                    Debug.Log("nothing to kill");
+                    //Debug.Log("nothing to kill");
                 }
                 piece.movePiece(new Vector3(moveTo.getLocation().x, 0.54f, moveTo.getLocation().z));
                 break;
@@ -374,8 +423,7 @@ public class PieceManager : MonoBehaviour
                 }
                 catch (System.Exception)
                 {
-
-                    Debug.Log("nothing to kill");
+                    //Debug.Log("nothing to kill");
                 }
                 piece.movePiece(new Vector3(moveTo.getLocation().x, 0.315f, moveTo.getLocation().z));
                 break;
@@ -387,9 +435,6 @@ public class PieceManager : MonoBehaviour
                 break;
         }
 
-
-
-
         if (moveTo.GetTileType() == Tile.TileTypeEnum.redGoal)      //win con for red team
         {
             RedWin();
@@ -400,6 +445,10 @@ public class PieceManager : MonoBehaviour
         }
     }
 
+    #endregion
+
+
+    
     #region graveyard of nonsense
 
     //Piece piece = chooseBestPiece();
@@ -552,12 +601,4 @@ public class PieceManager : MonoBehaviour
     //}
     #endregion
 
-    #endregion
-
-
-
-
-    #region hardAI
-
-    #endregion
 }
