@@ -3041,8 +3041,6 @@ MonoBehaviour:
   turnHandler: {fileID: 1147705019}
   minimax: {fileID: 0}
   mode: 0
-  inGoalAreaRed: []
-  inGoalAreaBlue: []
 --- !u!4 &337544980 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7819861350974781327, guid: f53c2fd2246c25e4cb0ecd405911c49c, type: 3}
@@ -13578,7 +13576,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
